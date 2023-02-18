@@ -1,0 +1,92 @@
+{
+  "-NO_XEGnFCVNpmulMIg7": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Two Cents Worth of Hope (Due soldi di speranza)",
+    "price": 98.8,
+    "quantity": 1,
+    "acquired": true
+  },
+  "-NO_XEGsj9yZtVMTs91j": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Stranger, The (Straniero, Lo)",
+    "price": 74.08,
+    "quantity": 6,
+    "acquired": true
+  },
+  "-NO_XEGvT2cigoJGdYTI": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Chump at Oxford, A",
+    "price": 37.01,
+    "quantity": 4,
+    "acquired": false
+  },
+  "-NO_XEGywcocFxffj97S": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Twentynine Palms",
+    "price": 82.01,
+    "quantity": 8,
+    "acquired": true
+  },
+  "-NO_XEH-3qxsunweIKnp": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Naked Prey, The",
+    "price": 25.14,
+    "quantity": 1,
+    "acquired": true
+  },
+  "-NO_XEH2Q_45QrSZMhnZ": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Armed and Dangerous",
+    "price": 68.14,
+    "quantity": 4,
+    "acquired": true
+  },
+  "-NO_XEH5pJXevp74ILnk": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Violet & Daisy",
+    "price": 45.06,
+    "quantity": 7,
+    "acquired": false
+  },
+  "-NO_XEHAG3JO08JOanUu": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Sentinel, The",
+    "price": 80.59,
+    "quantity": 9,
+    "acquired": false
+  },
+  "-NO_XEHDHFVwJ0sH3hTG": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Land of the Dead",
+    "price": 94.84,
+    "quantity": 6,
+    "acquired": true
+  },
+  "-NO_XEHHwPQy_rvBsOwo": {
+    "firebaseKey": "",
+    "project_id": "",
+    "task_id": "",
+    "material_name": "Jane Eyre",
+    "price": 33.08,
+    "quantity": 3,
+    "acquired": false
+  }
+}
