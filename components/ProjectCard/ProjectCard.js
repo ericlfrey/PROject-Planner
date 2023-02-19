@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card } from 'react-bootstrap';
 import styles from './ProjectCard.module.css';
 
 export default function ProjectCard({ projectObj }) {
   return (
-    <div>
-      <h1 className={styles.cardHeading}>📒</h1>
-      <h5>{projectObj.title}</h5>
-    </div>
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title className={styles.cardHeading}>📒</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{projectObj.title}</Card.Subtitle>
+      </Card.Body>
+    </Card>
   );
 }
 
