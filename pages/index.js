@@ -1,31 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { getUserProjects } from '../api/projectData';
 import ProjectCard from '../components/ProjectCard/ProjectCard';
-import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
+  const [projects, setProjects] = useState([]);
   const { user } = useAuth();
+
+  useEffect(() => {
+    getUserProjects(user.uid).then(setProjects);
+  }, []);
 
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
-      <div
-        className="text-center d-flex flex-column justify-content-center align-content-center"
-        style={{
-          height: '90vh',
-          padding: '30px',
-          maxWidth: '400px',
-          margin: '0 auto',
-        }}
-      >
-        <h1>Hello {user.displayName}! </h1>
-        <p>Click the button below to logout!</p>
-        <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={signOut}>
-          Sign Out
-        </button>
-        <ProjectCard />
+      <div className="d-flex flex-wrap justify-content-center">
+        {projects.map((project) => <ProjectCard key={project.firebaseKey} projectObj={project} />)}
       </div>
     </>
   );
