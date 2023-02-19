@@ -18,13 +18,22 @@ export default function NavBar() {
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <Link passHref href="/">
-                <a className="nav-link">
-                  Home
-                </a>
-              </Link>
-            </li>
+            <div className="nav-links">
+              <li className="nav-item">
+                <Link passHref href="/">
+                  <a className="nav-link">
+                    Home
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link passHref href="/project/new">
+                  <a className="nav-link">
+                    Add New Project
+                  </a>
+                </Link>
+              </li>
+            </div>
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
             </button>
