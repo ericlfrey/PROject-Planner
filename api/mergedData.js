@@ -1,9 +1,28 @@
-// import { clientCredentials } from '../utils/client';
+import { deleteMaterial, getProjectMaterials } from './materialData';
+import { deleteProject, getSingleProject } from './projectData';
+import { deleteTask, getProjectTasks } from './taskData';
 
-// const endpoint = clientCredentials.databaseURL;
+const getProjectDetails = async (firebaseKey) => {
+  const projectObj = await getSingleProject(firebaseKey);
+  const projectTasks = await getProjectTasks(firebaseKey);
+  const projectMaterials = await getProjectMaterials(firebaseKey);
+  return { ...projectObj, projectTasks, projectMaterials };
+};
 
-// const getProjectDetails = async (firebaseKey) => {
-//   const authorObject = await getSingleAuthor(firebaseKey);
-//   const booksArray = await getAuthorBooks(firebaseKey);
-//   return { ...authorObject, booksArray };
-// };
+const deleteProjectDetails = (firebaseKey) => new Promise((resolve, reject) => {
+  getProjectTasks(firebaseKey).then((tasksArr) => {
+    const deleteTaskPromises = tasksArr.map((task) => deleteTask(task.firebaseKey));
+    getProjectMaterials(firebaseKey).then((materialsArr) => {
+      const deleteMaterialsPromises = materialsArr.map((material) => deleteMaterial(material.firebaseKey));
+      Promise.all(deleteTaskPromises, deleteMaterialsPromises).then(() => {
+        deleteProject(firebaseKey).then(resolve);
+      });
+    });
+  })
+    .catch(reject);
+});
+
+export {
+  getProjectDetails,
+  deleteProjectDetails,
+};
