@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
+import ProjectForm from '../../components/ProjectForm/ProjectForm';
 
 export default function AddProjectPage() {
   return (
@@ -7,7 +8,7 @@ export default function AddProjectPage() {
       <Head>
         <title>Add New Project</title>
       </Head>
-      <h1>AddProjectPage</h1>
+      <ProjectForm />
     </>
   );
 }
