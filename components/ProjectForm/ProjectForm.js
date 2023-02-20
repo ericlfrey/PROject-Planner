@@ -20,7 +20,6 @@ export default function ProjectForm() {
       ...prevState,
       [name]: value,
     }));
-    console.warn(formInput);
   };
 
   const handleSubmit = (e) => {
@@ -28,7 +27,7 @@ export default function ProjectForm() {
     const payload = { ...formInput, uid: user.uid, date_created: new Date() };
     createProject(payload).then(({ name }) => {
       const patchPayload = { firebaseKey: name };
-      updateProject(patchPayload).then(() => router.push('/'));
+      updateProject(patchPayload).then(() => router.push(`/project/${patchPayload.firebaseKey}`));
     });
   };
   return (
