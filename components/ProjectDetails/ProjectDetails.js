@@ -46,9 +46,6 @@ export default function ProjectDetails({ project }) {
           </blockquote>
         </Card.Body>
       </Card>
-      {/* <h3>Project Name: {project.title}</h3>
-      <h1>{displayDate.toLocaleDateString()}</h1> */}
-      {/* <h1>Total Estimated Costs: ${totalCost}</h1> */}
     </>
   );
 }
