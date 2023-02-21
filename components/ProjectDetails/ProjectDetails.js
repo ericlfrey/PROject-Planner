@@ -3,10 +3,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { deleteProjectDetails } from '../../api/mergedData';
 
 export default function ProjectDetails({ project }) {
+  const router = useRouter();
   const displayDate = new Date(project.date_created);
   const totalCost = project.projectMaterials?.map((material) => material.price).reduce((a, b) => a + b);
+
+  const handleDelete = () => {
+    if (window.confirm('Are you sure you want to delete the Project?')) {
+      deleteProjectDetails(project.firebaseKey).then(() => router.push('/'));
+    }
+  };
+
   return (
     <>
       <Card>
@@ -14,6 +24,8 @@ export default function ProjectDetails({ project }) {
           <Link passHref href={`./edit/${project.firebaseKey}`}>
             Edit
           </Link>
+          <Card.Link onClick={handleDelete}> Delete
+          </Card.Link>
         </Card.Header>
         <Card.Body>
           <blockquote className="blockquote mb-0">
