@@ -24,6 +24,7 @@ export default function ViewProjectPage() {
         <title>{project.title}</title>
       </Head>
       <ProjectDetails project={project} />
+      <hr />
       <div className="d-flex flex-wrap justify-content-center">
         {project.projectTasks?.map((task) => <TaskCard key={task.firebaseKey} taskObj={task} />)}
       </div>
