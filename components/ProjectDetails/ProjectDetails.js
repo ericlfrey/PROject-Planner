@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
+import Link from 'next/link';
 
 export default function ProjectDetails({ project }) {
   const displayDate = new Date(project.date_created);
@@ -9,7 +10,11 @@ export default function ProjectDetails({ project }) {
   return (
     <>
       <Card>
-        <Card.Header className="text-end">Edit</Card.Header>
+        <Card.Header className="text-end">
+          <Link passHref href={`./edit/${project.firebaseKey}`}>
+            Edit
+          </Link>
+        </Card.Header>
         <Card.Body>
           <blockquote className="blockquote mb-0">
             <h3>{project.title}</h3>
@@ -31,6 +36,7 @@ export default function ProjectDetails({ project }) {
 
 ProjectDetails.propTypes = {
   project: PropTypes.shape({
+    firebaseKey: PropTypes.string,
     title: PropTypes.string,
     date_created: PropTypes.string,
     projectMaterials: PropTypes.array,
