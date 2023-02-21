@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getProjectDetails } from '../../api/mergedData';
+import MaterialCard from '../../components/MaterialCard/MaterialCard';
 import TaskCard from '../../components/TaskCard/TaskCard';
 
 export default function ViewProjectPage() {
@@ -28,7 +29,9 @@ export default function ViewProjectPage() {
       </div>
       <hr />
       <h2>materials:</h2>
-      {project.projectMaterials?.map((material) => <h3>{material.material_name}</h3>)}
+      <div className="d-flex flex-wrap justify-content-center">
+        {project.projectMaterials?.map((material) => <MaterialCard key={material.firebaseKey} materialObj={material} />)}
+      </div>
     </>
   );
 }
