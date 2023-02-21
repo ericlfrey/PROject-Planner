@@ -46,7 +46,7 @@ export default function ProjectForm({ projectObj }) {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Add a new Project</Form.Label>
+        <Form.Label>{projectObj.firebaseKey ? 'Edit' : 'Add a new'} Project</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter New Project Name"
