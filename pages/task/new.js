@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
+import TaskForm from '../../components/TaskForm/TaskForm';
 
 export default function AddTaskPage() {
   return (
@@ -7,7 +8,7 @@ export default function AddTaskPage() {
       <Head>
         <title>Add New Task</title>
       </Head>
-      <h1>AddTaskPage</h1>
+      <TaskForm />
     </>
   );
 }
