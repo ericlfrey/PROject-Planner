@@ -11,7 +11,7 @@ function Home() {
 
   useEffect(() => {
     getUserProjects(user.uid).then(setProjects);
-  }, []);
+  }, [user]);
 
   return (
     <>
