@@ -12,6 +12,8 @@ export default function ViewProjectPage() {
   const { firebaseKey } = router.query;
   const displayDate = new Date(project.date_created);
 
+  const totalCost = project.projectMaterials?.map((material) => material.price).reduce((a, b) => a + b);
+
   useEffect(() => {
     getProjectDetails(firebaseKey).then(setProject);
   }, [firebaseKey]);
@@ -22,6 +24,7 @@ export default function ViewProjectPage() {
       </Head>
       <h1>{project.title}</h1>
       <h1>{displayDate.toLocaleDateString()}</h1>
+      <h1>Total Estimated Costs: ${totalCost}</h1>
       <hr />
       <h2>tasks:</h2>
       <div className="d-flex flex-wrap justify-content-center">
