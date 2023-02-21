@@ -11,9 +11,6 @@ export default function ViewProjectPage() {
   const [project, setProject] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
-  // const displayDate = new Date(project.date_created);
-
-  // const totalCost = project.projectMaterials?.map((material) => material.price).reduce((a, b) => a + b);
 
   useEffect(() => {
     getProjectDetails(firebaseKey).then(setProject);
