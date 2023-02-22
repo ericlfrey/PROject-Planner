@@ -15,8 +15,8 @@ export default function ProjectDetails({ project }) {
 
   useEffect(() => {
     getProjectMaterials(project.firebaseKey).then(setMaterials);
-  }, []);
-  const totalCost = materials.length > 0 ? materials.map((material) => material.price).reduce((a, b) => a + b) : '0';
+  }, [project]);
+  const totalCost = materials.length > 0 ? materials.map((material) => material.price * material.quantity).reduce((a, b) => a + b) : '0';
 
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete the Project?')) {
