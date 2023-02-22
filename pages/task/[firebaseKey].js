@@ -17,7 +17,6 @@ export default function ViewTaskPage() {
     if (task.project_id) getSingleProject(task.project_id).then(setProject);
   }, [firebaseKey, task.project_id]);
 
-  // These details should include: Project Name, Task Name, Status, Details, and Date info.
   return (
     <>
       <Head>
