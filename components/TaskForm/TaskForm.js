@@ -35,11 +35,15 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { ...formInput, date_created: new Date(), project_id: projectFirebaseKey };
-    createTask(payload).then(({ name }) => {
-      const patchPayload = { firebaseKey: name };
-      updateTask(patchPayload).then(() => router.push(`/project/${projectFirebaseKey}`));
-    });
+    if (taskObj.firebaseKey) {
+      updateTask(formInput).then(() => router.push(`/task/${taskObj.firebaseKey}`));
+    } else {
+      const payload = { ...formInput, date_created: new Date(), project_id: projectFirebaseKey };
+      createTask(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateTask(patchPayload).then(() => router.push(`/project/${projectFirebaseKey}`));
+      });
+    }
   };
   // Task Name, Details, Status Checkboxes, and Due Date.
   return (
@@ -83,6 +87,7 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
               <div key="inline-radio" className="mb-3">
                 <Form.Check
                   inline
+                  id="todo"
                   type="radio"
                   label="To Do"
                   name="todo"
@@ -91,11 +96,14 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
                     setFormInput((prevState) => ({
                       ...prevState,
                       todo: e.target.checked,
+                      in_progress: !e.target.checked,
+                      complete: !e.target.checked,
                     }));
                   }}
                 />
                 <Form.Check
                   inline
+                  id="in_progress"
                   type="radio"
                   label="In Progress"
                   name="in_progress"
@@ -104,11 +112,14 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
                     setFormInput((prevState) => ({
                       ...prevState,
                       in_progress: e.target.checked,
+                      todo: !e.target.checked,
+                      complete: !e.target.checked,
                     }));
                   }}
                 />
                 <Form.Check
                   inline
+                  id="complete"
                   type="radio"
                   label="Complete"
                   name="complete"
@@ -117,6 +128,8 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
                     setFormInput((prevState) => ({
                       ...prevState,
                       complete: e.target.checked,
+                      in_progress: !e.target.checked,
+                      todo: !e.target.checked,
                     }));
                   }}
                 />
