@@ -40,7 +40,7 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
       updateTask(patchPayload).then(() => router.push(`/project/${projectFirebaseKey}`));
     });
   };
-
+  // Task Name, Details, Status Checkboxes, and Due Date.
   return (
     <>
       <h1>Task Form</h1>
@@ -75,6 +75,32 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
             onChange={handleChange}
           />
         </Form.Group>
+        {taskObj.firebaseKey
+          && (
+            <Form.Group className="mb-3">
+              <Form.Label>Status</Form.Label>
+              <div key="inline-radio" className="mb-3">
+                <Form.Check
+                  inline
+                  label="To Do"
+                  name="group1"
+                  type="radio"
+                />
+                <Form.Check
+                  inline
+                  label="In Progress"
+                  name="group1"
+                  type="radio"
+                />
+                <Form.Check
+                  inline
+                  label="Complete"
+                  name="group1"
+                  type="radio"
+                />
+              </div>
+            </Form.Group>
+          )}
         <Button variant="primary" type="submit">
           Submit
         </Button>
