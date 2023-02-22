@@ -25,7 +25,7 @@ export default function ViewProjectPage() {
       <ProjectDetails project={project} />
       <hr />
       <h2>tasks:</h2>
-      <Link passHref href="/task/new">
+      <Link passHref href={`/task/new/${firebaseKey}`}>
         <Button>Add Task</Button>
       </Link>
       <div className="d-flex flex-wrap justify-content-center">
