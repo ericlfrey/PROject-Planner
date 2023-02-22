@@ -14,8 +14,12 @@ export default function ViewProjectPage() {
   const router = useRouter();
   const { firebaseKey } = router.query;
 
-  useEffect(() => {
+  const getTheProjectDetails = () => {
     getProjectDetails(firebaseKey).then(setProject);
+  };
+
+  useEffect(() => {
+    getTheProjectDetails();
   }, [firebaseKey]);
   return (
     <>
@@ -29,7 +33,13 @@ export default function ViewProjectPage() {
         <Button>Add Task</Button>
       </Link>
       <div className="d-flex flex-wrap justify-content-center">
-        {project.projectTasks?.map((task) => <TaskCard key={task.firebaseKey} taskObj={task} />)}
+        {project.projectTasks?.map((task) => (
+          <TaskCard
+            key={task.firebaseKey}
+            taskObj={task}
+            onChange={getTheProjectDetails}
+          />
+        ))}
       </div>
       <hr />
       <h2>materials:</h2>
