@@ -11,6 +11,7 @@ const initialState = {
   details: '',
   date_created: '',
   due_date: '',
+  todo: true,
   complete: false,
   in_progress: false,
 };
@@ -83,7 +84,13 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
                 <Form.Check
                   inline
                   label="To Do"
-                  name="group1"
+                  // name=""
+                  onChange={(e) => {
+                    setFormInput((prevState) => ({
+                      ...prevState,
+                      todo: e.target.checked,
+                    }));
+                  }}
                   type="radio"
                 />
                 <Form.Check
@@ -118,6 +125,7 @@ TaskForm.propTypes = {
     details: PropTypes.string,
     date_created: PropTypes.string,
     due_date: PropTypes.string,
+    todo: PropTypes.bool,
     complete: PropTypes.bool,
     in_progress: PropTypes.bool,
   }),
