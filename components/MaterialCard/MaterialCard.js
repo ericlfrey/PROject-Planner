@@ -1,13 +1,16 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 export default function MaterialCard({ materialObj }) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>{materialObj.material_name}</Card.Title>
-        <Card.Link href="#">View</Card.Link>
+        <Link passHref href={`/material/${materialObj.firebaseKey}`}>
+          <Card.Link href="#">View</Card.Link>
+        </Link>
         <Card.Link href="#">Edit</Card.Link>
         <Card.Link href="#">Delete</Card.Link>
       </Card.Body>
