@@ -44,7 +44,7 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
   // Task Name, Details, Status Checkboxes, and Due Date.
   return (
     <>
-      <h1>Task Form</h1>
+      <h1>{taskObj.firebaseKey ? 'Edit' : 'Add'} Task</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Task Name</Form.Label>
@@ -83,33 +83,48 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
               <div key="inline-radio" className="mb-3">
                 <Form.Check
                   inline
+                  type="radio"
                   label="To Do"
-                  // name=""
+                  name="todo"
+                  checked={formInput.todo}
                   onChange={(e) => {
                     setFormInput((prevState) => ({
                       ...prevState,
                       todo: e.target.checked,
                     }));
                   }}
-                  type="radio"
                 />
                 <Form.Check
                   inline
+                  type="radio"
                   label="In Progress"
-                  name="group1"
-                  type="radio"
+                  name="in_progress"
+                  checked={formInput.in_progress}
+                  onChange={(e) => {
+                    setFormInput((prevState) => ({
+                      ...prevState,
+                      in_progress: e.target.checked,
+                    }));
+                  }}
                 />
                 <Form.Check
                   inline
-                  label="Complete"
-                  name="group1"
                   type="radio"
+                  label="Complete"
+                  name="complete"
+                  checked={formInput.complete}
+                  onChange={(e) => {
+                    setFormInput((prevState) => ({
+                      ...prevState,
+                      complete: e.target.checked,
+                    }));
+                  }}
                 />
               </div>
             </Form.Group>
           )}
         <Button variant="primary" type="submit">
-          Submit
+          {taskObj.firebaseKey ? 'Edit Task' : 'Add Task'}
         </Button>
       </Form>
     </>
