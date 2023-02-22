@@ -11,7 +11,9 @@ export default function TaskCard({ taskObj }) {
         <Link passHref href={`/task/${taskObj.firebaseKey}`}>
           <Card.Link href="#">View</Card.Link>
         </Link>
-        <Card.Link href="#">Edit</Card.Link>
+        <Link passHref href={`/task/edit/${taskObj.firebaseKey}`}>
+          <Card.Link href="#">Edit</Card.Link>
+        </Link>
         <Card.Link href="#">Delete</Card.Link>
       </Card.Body>
     </Card>
