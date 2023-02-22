@@ -1,15 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { deleteProjectDetails } from '../../api/mergedData';
+import { getProjectMaterials } from '../../api/materialData';
 
 export default function ProjectDetails({ project }) {
+  const [materials, setMaterials] = useState([]);
   const router = useRouter();
   const displayDate = new Date(project.date_created);
-  const totalCost = project.projectMaterials?.map((material) => material.price).reduce((a, b) => a + b);
+
+  useEffect(() => {
+    getProjectMaterials(project.firebaseKey).then(setMaterials);
+  }, []);
+  const totalCost = materials.length > 0 ? materials.map((material) => material.price).reduce((a, b) => a + b) : '0';
 
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete the Project?')) {
@@ -39,9 +46,6 @@ export default function ProjectDetails({ project }) {
           </blockquote>
         </Card.Body>
       </Card>
-      {/* <h3>Project Name: {project.title}</h3>
-      <h1>{displayDate.toLocaleDateString()}</h1> */}
-      {/* <h1>Total Estimated Costs: ${totalCost}</h1> */}
     </>
   );
 }
