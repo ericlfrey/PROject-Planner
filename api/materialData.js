@@ -38,7 +38,7 @@ const getTaskMaterials = (taskID) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleMaterials = (firebaseKey) => new Promise((resolve, reject) => {
+const getSingleMaterial = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/materials/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
@@ -91,7 +91,7 @@ const deleteMaterial = (firebaseKey) => new Promise((resolve, reject) => {
 export {
   getProjectMaterials,
   getTaskMaterials,
-  getSingleMaterials,
+  getSingleMaterial,
   createMaterial,
   updateMaterial,
   deleteMaterial,

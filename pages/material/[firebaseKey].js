@@ -1,13 +1,25 @@
 import Head from 'next/head';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { getSingleMaterial } from '../../api/materialData';
+import MaterialDetails from '../../components/MaterialDetails/MaterialDetails';
 
 export default function ViewMaterialPage() {
+  const [material, setMaterial] = useState({});
+
+  const router = useRouter();
+  const { firebaseKey } = router.query;
+
+  useEffect(() => {
+    getSingleMaterial(firebaseKey).then(setMaterial);
+  }, [firebaseKey]);
+
   return (
     <>
       <Head>
-        <title>View Dynamic Material</title>
+        <title>{material.material_name}</title>
       </Head>
-      <h1>ViewMaterialPage</h1>
+      <MaterialDetails firebaseKey={firebaseKey} />
     </>
   );
 }
