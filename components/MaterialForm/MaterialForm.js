@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { getProjectTasks } from '../../api/taskData';
 
 const initialState = {
   firebaseKey: '',
@@ -14,6 +15,11 @@ const initialState = {
 
 export default function MaterialForm({ projectFirebaseKey }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [projectTasks, setProjectTasks] = useState([]);
+
+  useEffect(() => {
+    getProjectTasks(projectFirebaseKey).then(setProjectTasks);
+  }, [projectFirebaseKey]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +37,7 @@ export default function MaterialForm({ projectFirebaseKey }) {
   return (
     <>
       {/* {taskObj.firebaseKey ? 'Edit' : 'Add'} */}
-      <h1> Task</h1>
+      <h1>Material</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Material Name</Form.Label>
@@ -65,6 +71,28 @@ export default function MaterialForm({ projectFirebaseKey }) {
             onChange={handleChange}
             required
           />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Assign to Task</Form.Label>
+          <Form.Select
+            name="task_id"
+            onChange={handleChange}
+            className="mb-3"
+            value={formInput.task_id}
+            required
+          >
+            <option value="">Assign to Task</option>
+            {
+              projectTasks.map((task) => (
+                <option
+                  key={task.firebaseKey}
+                  value={task.firebaseKey}
+                >
+                  {task.task_name}
+                </option>
+              ))
+            }
+          </Form.Select>
         </Form.Group>
 
         <Button variant="primary" type="submit">
