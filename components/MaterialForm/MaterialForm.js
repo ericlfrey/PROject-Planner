@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import { getProjectTasks } from '../../api/taskData';
+import { createMaterial, updateMaterial } from '../../api/materialData';
 
 const initialState = {
   firebaseKey: '',
@@ -16,6 +18,8 @@ const initialState = {
 export default function MaterialForm({ projectFirebaseKey }) {
   const [formInput, setFormInput] = useState(initialState);
   const [projectTasks, setProjectTasks] = useState([]);
+
+  const router = useRouter();
 
   useEffect(() => {
     getProjectTasks(projectFirebaseKey).then(setProjectTasks);
@@ -32,7 +36,10 @@ export default function MaterialForm({ projectFirebaseKey }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = { ...formInput, project_id: projectFirebaseKey };
-    console.warn(payload);
+    createMaterial(payload).then(({ name }) => {
+      const patchPayload = { firebaseKey: name };
+      updateMaterial(patchPayload).then(router.push(`/project/${projectFirebaseKey}`));
+    });
   };
   return (
     <>
