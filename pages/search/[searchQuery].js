@@ -1,11 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { getAllProjectsDetails } from '../../api/mergedData';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function SearchPage() {
+  const [projects, setProjects] = useState([]);
+  const { user } = useAuth();
+  const router = useRouter();
+  const { searchQuery } = router.query;
+
+  useEffect(() => {
+    getAllProjectsDetails(user.uid).then((values) => setProjects(values));
+    console.warn(projects);
+  }, [searchQuery]);
+
   return (
     <>
       <Head>
-        <title>Search for Dynamic</title>
+        <title>Search for "{`${searchQuery}`}"</title>
       </Head>
       <h1>SearchPage</h1>
     </>
