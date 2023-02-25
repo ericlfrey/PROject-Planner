@@ -11,11 +11,11 @@ const initialState = {
   task_id: '',
   material_name: '',
   price: '',
-  quantity: 0,
+  quantity: '',
   acquired: false,
 };
 
-export default function MaterialForm({ projectFirebaseKey }) {
+export default function MaterialForm({ projectFirebaseKey, materialObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [projectTasks, setProjectTasks] = useState([]);
 
@@ -35,12 +35,15 @@ export default function MaterialForm({ projectFirebaseKey }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { ...formInput, project_id: projectFirebaseKey };
-    // console.warn(payload);
-    createMaterial(payload).then(({ name }) => {
-      const patchPayload = { firebaseKey: name };
-      updateMaterial(patchPayload).then(router.push(`/project/${projectFirebaseKey}`));
-    });
+    if (materialObj.firebaseKey) {
+      console.warn('buttbface');
+    } else {
+      const payload = { ...formInput, project_id: projectFirebaseKey };
+      createMaterial(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateMaterial(patchPayload).then(router.push(`/project/${projectFirebaseKey}`));
+      });
+    }
   };
   return (
     <>
@@ -115,5 +118,19 @@ export default function MaterialForm({ projectFirebaseKey }) {
 }
 
 MaterialForm.propTypes = {
-  projectFirebaseKey: PropTypes.string.isRequired,
+  projectFirebaseKey: PropTypes.string,
+  materialObj: PropTypes.shape({
+    firebaseKey: PropTypes.string,
+    project_id: PropTypes.string,
+    task_id: PropTypes.string,
+    material_name: PropTypes.string,
+    price: PropTypes.string,
+    quantity: PropTypes.string,
+    acquired: PropTypes.bool,
+  }),
+};
+
+MaterialForm.defaultProps = {
+  projectFirebaseKey: '',
+  materialObj: initialState,
 };

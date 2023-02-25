@@ -13,7 +13,7 @@ export default function MaterialDetails({ firebaseKey }) {
     getSingleMaterial(firebaseKey).then(setMaterial);
     if (material.project_id) getSingleProject(material.project_id).then(setProject);
   }, [firebaseKey, material.project_id]);
-  // Project Name, Material Name, whether or not it has been acquired, price, and quantity.
+
   const handleDeleteTask = () => {
     console.warn('Delete mfer');
   };
