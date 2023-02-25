@@ -108,6 +108,24 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
             }
           </Form.Select>
         </Form.Group>
+        {materialObj.firebaseKey
+          ? (
+            <Form.Group className="mb-3">
+              <Form.Label>Acquired?</Form.Label>
+              <Form.Check
+                type="switch"
+                name="acquired"
+                checked={formInput.acquired}
+                onChange={(e) => {
+                  setFormInput((prevState) => ({
+                    ...prevState,
+                    acquired: e.target.checked,
+                  }));
+                }}
+              />
+            </Form.Group>
+          )
+          : ''}
 
         <Button variant="primary" type="submit">
           {/* {taskObj.firebaseKey ? 'Edit Task' : 'Add Task'} */}
