@@ -47,7 +47,13 @@ export default function ViewProjectPage() {
         <Button>Add Material</Button>
       </Link>
       <div className="d-flex flex-wrap justify-content-center">
-        {project.projectMaterials?.map((material) => <MaterialCard key={material.firebaseKey} materialObj={material} />)}
+        {project.projectMaterials?.map((material) => (
+          <MaterialCard
+            key={material.firebaseKey}
+            materialObj={material}
+            onChange={getTheProjectDetails}
+          />
+        ))}
       </div>
     </>
   );
