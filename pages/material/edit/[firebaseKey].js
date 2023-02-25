@@ -16,7 +16,7 @@ export default function EditMaterialPage() {
   return (
     <>
       <Head>
-        <title>Edit Dynamic Material</title>
+        <title>Edit {`${material.material_name}`}</title>
       </Head>
       <MaterialForm materialObj={material} projectFirebaseKey={material.project_id} />
     </>

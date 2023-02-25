@@ -48,8 +48,7 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
   };
   return (
     <>
-      {/* {taskObj.firebaseKey ? 'Edit' : 'Add'} */}
-      <h1>Material</h1>
+      <h1>{materialObj.firebaseKey ? 'Edit' : 'Add'} Material</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Material Name</Form.Label>
@@ -128,8 +127,7 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
           : ''}
 
         <Button variant="primary" type="submit">
-          {/* {taskObj.firebaseKey ? 'Edit Task' : 'Add Task'} */}
-          Submit
+          {materialObj.firebaseKey ? 'Edit Material' : 'Add Material'}
         </Button>
       </Form>
     </>
