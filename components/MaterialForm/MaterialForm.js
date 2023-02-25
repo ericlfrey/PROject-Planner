@@ -11,11 +11,11 @@ const initialState = {
   task_id: '',
   material_name: '',
   price: '',
-  quantity: 0,
+  quantity: '',
   acquired: false,
 };
 
-export default function MaterialForm({ projectFirebaseKey }) {
+export default function MaterialForm({ projectFirebaseKey, materialObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [projectTasks, setProjectTasks] = useState([]);
 
@@ -23,7 +23,8 @@ export default function MaterialForm({ projectFirebaseKey }) {
 
   useEffect(() => {
     getProjectTasks(projectFirebaseKey).then(setProjectTasks);
-  }, [projectFirebaseKey]);
+    if (materialObj.firebaseKey) setFormInput(materialObj);
+  }, [materialObj, projectFirebaseKey]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,17 +36,19 @@ export default function MaterialForm({ projectFirebaseKey }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { ...formInput, project_id: projectFirebaseKey };
-    // console.warn(payload);
-    createMaterial(payload).then(({ name }) => {
-      const patchPayload = { firebaseKey: name };
-      updateMaterial(patchPayload).then(router.push(`/project/${projectFirebaseKey}`));
-    });
+    if (materialObj.firebaseKey) {
+      updateMaterial(formInput).then(router.push(`/project/${projectFirebaseKey}`));
+    } else {
+      const payload = { ...formInput, project_id: projectFirebaseKey };
+      createMaterial(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateMaterial(patchPayload).then(router.push(`/project/${projectFirebaseKey}`));
+      });
+    }
   };
   return (
     <>
-      {/* {taskObj.firebaseKey ? 'Edit' : 'Add'} */}
-      <h1>Material</h1>
+      <h1>{materialObj.firebaseKey ? 'Edit' : 'Add'} Material</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Material Name</Form.Label>
@@ -104,10 +107,27 @@ export default function MaterialForm({ projectFirebaseKey }) {
             }
           </Form.Select>
         </Form.Group>
+        {materialObj.firebaseKey
+          ? (
+            <Form.Group className="mb-3">
+              <Form.Label>Acquired?</Form.Label>
+              <Form.Check
+                type="switch"
+                name="acquired"
+                checked={formInput.acquired}
+                onChange={(e) => {
+                  setFormInput((prevState) => ({
+                    ...prevState,
+                    acquired: e.target.checked,
+                  }));
+                }}
+              />
+            </Form.Group>
+          )
+          : ''}
 
         <Button variant="primary" type="submit">
-          {/* {taskObj.firebaseKey ? 'Edit Task' : 'Add Task'} */}
-          Submit
+          {materialObj.firebaseKey ? 'Edit Material' : 'Add Material'}
         </Button>
       </Form>
     </>
@@ -115,5 +135,19 @@ export default function MaterialForm({ projectFirebaseKey }) {
 }
 
 MaterialForm.propTypes = {
-  projectFirebaseKey: PropTypes.string.isRequired,
+  projectFirebaseKey: PropTypes.string,
+  materialObj: PropTypes.shape({
+    firebaseKey: PropTypes.string,
+    project_id: PropTypes.string,
+    task_id: PropTypes.string,
+    material_name: PropTypes.string,
+    price: PropTypes.string,
+    quantity: PropTypes.string,
+    acquired: PropTypes.bool,
+  }),
+};
+
+MaterialForm.defaultProps = {
+  projectFirebaseKey: '',
+  materialObj: initialState,
 };

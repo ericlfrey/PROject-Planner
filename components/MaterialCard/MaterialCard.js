@@ -11,7 +11,9 @@ export default function MaterialCard({ materialObj }) {
         <Link passHref href={`/material/${materialObj.firebaseKey}`}>
           <Card.Link href="#">View</Card.Link>
         </Link>
-        <Card.Link href="#">Edit</Card.Link>
+        <Link passHref href={`/material/edit/${materialObj.firebaseKey}`}>
+          <Card.Link href="#">Edit</Card.Link>
+        </Link>
         <Card.Link href="#">Delete</Card.Link>
       </Card.Body>
     </Card>
