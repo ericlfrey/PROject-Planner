@@ -18,7 +18,7 @@ export default function EditMaterialPage() {
       <Head>
         <title>Edit Dynamic Material</title>
       </Head>
-      <MaterialForm materialObj={material} />
+      <MaterialForm materialObj={material} projectFirebaseKey={material.project_id} />
     </>
   );
 }

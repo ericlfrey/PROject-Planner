@@ -23,7 +23,8 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
 
   useEffect(() => {
     getProjectTasks(projectFirebaseKey).then(setProjectTasks);
-  }, [projectFirebaseKey]);
+    if (materialObj.firebaseKey) setFormInput(materialObj);
+  }, [materialObj, projectFirebaseKey]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +37,7 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (materialObj.firebaseKey) {
-      console.warn('buttbface');
+      updateMaterial(formInput).then(router.push(`/project/${projectFirebaseKey}`));
     } else {
       const payload = { ...formInput, project_id: projectFirebaseKey };
       createMaterial(payload).then(({ name }) => {
