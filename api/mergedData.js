@@ -1,5 +1,5 @@
 import { deleteMaterial, getProjectMaterials } from './materialData';
-import { deleteProject, getSingleProject } from './projectData';
+import { deleteProject, getSingleProject, getUserProjects } from './projectData';
 import { deleteTask, getProjectTasks } from './taskData';
 
 const getProjectDetails = async (firebaseKey) => {
@@ -22,7 +22,16 @@ const deleteProjectDetails = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getAllProjectsDetails = (uid) => new Promise((resolve, reject) => {
+  getUserProjects(uid).then((userProjectsArr) => {
+    const projectDetailsPromises = userProjectsArr.map((project) => getProjectDetails(project.firebaseKey));
+    Promise.all(projectDetailsPromises).then(resolve);
+  })
+    .catch(reject);
+});
+
 export {
   getProjectDetails,
   deleteProjectDetails,
+  getAllProjectsDetails,
 };
