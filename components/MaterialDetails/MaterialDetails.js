@@ -2,20 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { getSingleMaterial } from '../../api/materialData';
+import { useRouter } from 'next/router';
+import { deleteMaterial, getSingleMaterial } from '../../api/materialData';
 import { getSingleProject } from '../../api/projectData';
 
 export default function MaterialDetails({ firebaseKey }) {
   const [material, setMaterial] = useState({});
   const [project, setProject] = useState({});
 
+  const router = useRouter();
+
   useEffect(() => {
     getSingleMaterial(firebaseKey).then(setMaterial);
     if (material.project_id) getSingleProject(material.project_id).then(setProject);
   }, [firebaseKey, material.project_id]);
 
-  const handleDeleteTask = () => {
-    console.warn('Delete mfer');
+  const handleDeleteMaterial = () => {
+    if (window.confirm(`Are you sure you want to delete "${material.material_name}"? This task cannot be undone.`)) {
+      deleteMaterial(firebaseKey).then(router.push(`/project/${project.firebaseKey}`));
+    }
   };
   return (
     <Card style={{ width: '18rem' }}>
@@ -29,7 +34,7 @@ export default function MaterialDetails({ firebaseKey }) {
         <Link passHref href={`/material/edit/${firebaseKey}`}>
           <Card.Link href="#">Edit</Card.Link>
         </Link>
-        <Card.Link href="#" onClick={handleDeleteTask}>Delete</Card.Link>
+        <Card.Link href="#" onClick={handleDeleteMaterial}>Delete</Card.Link>
         <Link passHref href={`/project/${material.project_id}`}>
           <Card.Link href="#">Go Back</Card.Link>
         </Link>
