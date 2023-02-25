@@ -11,7 +11,7 @@ const initialState = {
   task_id: '',
   material_name: '',
   price: '',
-  quantity: '',
+  quantity: 0,
   acquired: false,
 };
 
@@ -36,6 +36,7 @@ export default function MaterialForm({ projectFirebaseKey }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = { ...formInput, project_id: projectFirebaseKey };
+    // console.warn(payload);
     createMaterial(payload).then(({ name }) => {
       const patchPayload = { firebaseKey: name };
       updateMaterial(patchPayload).then(router.push(`/project/${projectFirebaseKey}`));
@@ -71,9 +72,11 @@ export default function MaterialForm({ projectFirebaseKey }) {
         <Form.Group className="mb-3">
           <Form.Label>Quantity</Form.Label>
           <Form.Control
-            type="text"
+            type="number"
             placeholder="Quantity"
             name="quantity"
+            min="1"
+            step="1"
             value={formInput.quantity}
             onChange={handleChange}
             required
