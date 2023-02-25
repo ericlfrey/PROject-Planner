@@ -30,9 +30,9 @@ export default function MaterialDetails({ firebaseKey }) {
           <Card.Link href="#">Edit</Card.Link>
         </Link>
         <Card.Link href="#" onClick={handleDeleteTask}>Delete</Card.Link>
-        {/* <Link passHref href={`/project/${task.project_id}`}> */}
-        <Card.Link href="#">Go Back</Card.Link>
-        {/* </Link> */}
+        <Link passHref href={`/project/${material.project_id}`}>
+          <Card.Link href="#">Go Back</Card.Link>
+        </Link>
       </Card.Body>
     </Card>
   );
