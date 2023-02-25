@@ -24,8 +24,8 @@ MaterialCard.propTypes = {
     project_id: PropTypes.string,
     task_id: PropTypes.string,
     material_name: PropTypes.string,
-    price: PropTypes.number,
-    quantity: PropTypes.number,
+    price: PropTypes.string,
+    quantity: PropTypes.string,
     acquired: PropTypes.bool,
   }).isRequired,
 };
