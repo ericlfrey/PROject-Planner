@@ -1,0 +1,28 @@
+.searchBar {
+  background-color: #FEFBE9;
+  border: none;
+  color: #183A1D;
+}
+
+.searchBar:focus {
+  background-color: #FEFBE9;
+  box-shadow: none;
+  border: none;
+  color: #183A1D;
+}
+
+.searchBar::placeholder {
+  color: #68B984;
+}
+
+.searchBtn {
+  background-color: #183A1D;
+  border: solid 1px #183A1D;
+  color: #E1EEDD;
+}
+
+.searchBtn:hover,
+.searchBtn:active {
+  background-color: #68B984 !important;
+  border: solid 1px #68B984 !important;
+}

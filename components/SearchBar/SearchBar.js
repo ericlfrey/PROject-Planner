@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import {
   Button, Form, FormControl, InputGroup,
 } from 'react-bootstrap';
+import Image from 'next/image';
+import styles from './SearchBar.module.css';
+import searchWhite from '../../public/images/searchWhite.png';
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -23,12 +26,13 @@ export default function SearchBar() {
     <Form onSubmit={handleSubmit}>
       <InputGroup className="m-auto">
         <FormControl
+          className={styles.searchBar}
           placeholder="Search"
           onChange={handleChange}
           value={searchInput}
         />
-        <Button type="submit">
-          search
+        <Button type="submit" className={styles.searchBtn} id="searchBtn">
+          <Image src={searchWhite} alt="search icon" height={20} width={20} />
         </Button>
       </InputGroup>
     </Form>
