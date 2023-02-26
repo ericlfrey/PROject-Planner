@@ -26,25 +26,21 @@
   display: flex;
 }
 
-.navLink {
+.navLink,
+.navLink:focus {
   color: #183A1D;
 }
 
-.navLink:hover {
-  color: #183A1D;
-  text-shadow: 0 0 .7px rgb(24, 58, 29);
+.navLink:hover,
+.signOutBtn:hover {
+  color: #327a3d;
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 .5px rgb(24, 58, 29));
+  filter: drop-shadow(0 0 .2px rgb(24, 58, 29));
 }
 
 .signOutBtn {
   all: unset;
   color: #183A1D;
-}
-
-.signOutBtn:hover {
-  color: #183A1D;
-  text-shadow: 0 0 1px rgb(24, 58, 29);
 }
