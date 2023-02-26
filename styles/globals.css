@@ -1,5 +1,12 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 
+/* color pallette: 
+#183A1D Dark Green rgb(24, 58, 29)
+#F0A04B Orange rgb(240, 160, 75)
+#E1EEDD Light Blue rgb(225, 238, 221)
+#FEFBE9 Off White  rgb(254, 251, 233)
+*/
+
 html,
 body {
   padding: 0;
