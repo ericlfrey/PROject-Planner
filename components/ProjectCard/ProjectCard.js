@@ -7,14 +7,16 @@ import styles from './ProjectCard.module.css';
 
 export default function ProjectCard({ projectObj }) {
   return (
-    <Link passHref href={`/project/${projectObj.firebaseKey}`}>
-      <Card style={{ width: '18rem' }}>
-        <Card.Body>
-          <Card.Title className={styles.cardHeading}>📒</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">{projectObj.title}</Card.Subtitle>
-        </Card.Body>
-      </Card>
-    </Link>
+    <Card className={styles.card}>
+      <Card.Body className={styles.cardBody}>
+        <Link passHref href={`/project/${projectObj.firebaseKey}`}>
+          <Card.Link className={styles.cardHeading}>📒</Card.Link>
+        </Link>
+        <Link passHref href={`/project/${projectObj.firebaseKey}`}>
+          <Card.Link className={styles.projectName}>{projectObj.title}</Card.Link>
+        </Link>
+      </Card.Body>
+    </Card>
   );
 }
 
