@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import PropTypes from 'prop-types';
 import { useAuth } from './context/authContext';
 import Loading from '../components/Loading';

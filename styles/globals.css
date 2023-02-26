@@ -25,7 +25,22 @@ a {
 }
 
 body {
-  background-color: #FEFBE9;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: #fefbe9;
+}
+
+body::before {
+  content: "";
+  background-image: url("../public/images/paper.jpeg");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.3;
 }
 
 .navbar-nav {
