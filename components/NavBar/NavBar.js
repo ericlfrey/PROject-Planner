@@ -40,7 +40,7 @@ export default function NavBar() {
               </li>
             </div>
             <SearchBar />
-            <button type="button" className="btn btn-danger" onClick={signOut}>
+            <button type="button" className={styles.signOutBtn} onClick={signOut}>
               Sign Out
             </button>
           </ul>
