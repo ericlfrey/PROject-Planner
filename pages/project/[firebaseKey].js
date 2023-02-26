@@ -11,6 +11,7 @@ import TaskCard from '../../components/TaskCard/TaskCard';
 
 export default function ViewProjectPage() {
   const [project, setProject] = useState({});
+
   const router = useRouter();
   const { firebaseKey } = router.query;
 
@@ -21,6 +22,7 @@ export default function ViewProjectPage() {
   useEffect(() => {
     getTheProjectDetails();
   }, [firebaseKey]);
+
   return (
     <>
       <Head>

@@ -10,6 +10,7 @@ export default function TaskCard({ taskObj, onChange }) {
       deleteTask(taskObj.firebaseKey).then(onChange);
     }
   };
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>

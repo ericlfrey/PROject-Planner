@@ -19,7 +19,12 @@ function Home() {
         <title>Home</title>
       </Head>
       <div className="d-flex flex-wrap justify-content-center">
-        {projects.map((project) => <ProjectCard key={project.firebaseKey} projectObj={project} />)}
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.firebaseKey}
+            projectObj={project}
+          />
+        ))}
       </div>
     </>
   );

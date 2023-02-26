@@ -7,11 +7,14 @@ import ProjectForm from '../../../components/ProjectForm/ProjectForm';
 
 export default function EditProjectPage() {
   const [project, setProject] = useState({});
+
   const router = useRouter();
   const { firebaseKey } = router.query;
+
   useEffect(() => {
     getSingleProject(firebaseKey).then(setProject);
   }, [firebaseKey]);
+
   return (
     <>
       <Head>

@@ -13,6 +13,7 @@ export default function ViewTaskPage() {
   useEffect(() => {
     getSingleTask(firebaseKey).then(setTask);
   }, [firebaseKey]);
+
   return (
     <>
       <Head>

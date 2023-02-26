@@ -6,6 +6,7 @@ import {
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
+
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -17,6 +18,7 @@ export default function SearchBar() {
     if (searchInput !== '') router.push(`/search/${searchInput}`);
     setSearchInput('');
   };
+
   return (
     <Form onSubmit={handleSubmit}>
       <InputGroup className="m-auto">
