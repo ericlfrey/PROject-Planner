@@ -13,7 +13,7 @@ export default function NavBar() {
       <div className={`container-fluid ${styles.navContainer}`}>
         <Link passHref href="/">
           <a className={`navbar-brand ${styles.navbarBrand}`}>
-            <Image src={logo} height={60} width={60} />
+            <Image src={logo} height={60} width={60} className={styles.logo} />
             {/* 📒 PROject Planner */}
           </a>
         </Link>
@@ -26,14 +26,14 @@ export default function NavBar() {
             <div className={`nav-links ${styles.navLinks}`}>
               <li className="nav-item">
                 <Link passHref href="/">
-                  <a className="nav-link">
+                  <a className={`${styles.navLink} nav-link`}>
                     Home
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link passHref href="/project/new">
-                  <a className="nav-link">
+                  <a className={`${styles.navLink} nav-link`}>
                     Add New Project
                   </a>
                 </Link>

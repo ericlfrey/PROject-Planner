@@ -19,8 +19,22 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-left: 20px;
 }
 
 .navLinks {
   display: flex;
+}
+
+.navLink {
+  color: #183A1D;
+}
+
+.navLink:hover {
+  color: #183A1D;
+  text-shadow: 0 0 .7px rgb(24, 58, 29);
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 .5px rgb(24, 58, 29));
 }
