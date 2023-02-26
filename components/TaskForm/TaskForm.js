@@ -45,7 +45,7 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
       });
     }
   };
-  // Task Name, Details, Status Checkboxes, and Due Date.
+
   return (
     <>
       <h1>{taskObj.firebaseKey ? 'Edit' : 'Add'} Task</h1>

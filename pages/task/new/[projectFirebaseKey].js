@@ -13,6 +13,7 @@ export default function AddTaskPage() {
   useEffect(() => {
     getSingleProject(projectFirebaseKey).then(setProject);
   }, [projectFirebaseKey]);
+
   return (
     <>
       <Head>

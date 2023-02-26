@@ -9,7 +9,9 @@ import { useAuth } from '../../utils/context/authContext';
 
 export default function SearchPage() {
   const [projects, setProjects] = useState([]);
+
   const { user } = useAuth();
+
   const router = useRouter();
   const { searchQuery } = router.query;
 

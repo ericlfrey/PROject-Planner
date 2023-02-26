@@ -10,16 +10,22 @@ import { getProjectMaterials } from '../../api/materialData';
 
 export default function ProjectDetails({ project }) {
   const [materials, setMaterials] = useState([]);
+
   const router = useRouter();
+
   const displayDate = new Date(project.date_created);
+  const totalCost = materials.length > 0
+    ? materials.map((material) => material.price * material.quantity)
+      .reduce((a, b) => a + b)
+      .toFixed(2)
+    : '0';
 
   useEffect(() => {
     getProjectMaterials(project.firebaseKey).then(setMaterials);
   }, [project]);
-  const totalCost = materials.length > 0 ? materials.map((material) => material.price * material.quantity).reduce((a, b) => a + b).toFixed(2) : '0';
 
   const handleDelete = () => {
-    if (window.confirm('Are you sure you want to delete the Project?')) {
+    if (window.confirm(`Are you sure you want to delete "${project.title}"? This task cannot be undone.`)) {
       deleteProjectDetails(project.firebaseKey).then(() => router.push('/'));
     }
   };

@@ -10,6 +10,7 @@ export default function MaterialCard({ materialObj, onChange }) {
       deleteMaterial(materialObj.firebaseKey).then(onChange);
     }
   };
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>

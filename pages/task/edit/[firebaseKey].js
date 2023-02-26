@@ -13,10 +13,11 @@ export default function EditTaskPage() {
   useEffect(() => {
     getSingleTask(firebaseKey).then(setTask);
   }, [firebaseKey]);
+
   return (
     <>
       <Head>
-        <title>Edit Dynamic Task</title>
+        <title>Edit {`${task.task_name}`}</title>
       </Head>
       <TaskForm taskObj={task} />
     </>

@@ -46,6 +46,7 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
       });
     }
   };
+
   return (
     <>
       <h1>{materialObj.firebaseKey ? 'Edit' : 'Add'} Material</h1>
@@ -125,7 +126,6 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
             </Form.Group>
           )
           : ''}
-
         <Button variant="primary" type="submit">
           {materialObj.firebaseKey ? 'Edit Material' : 'Add Material'}
         </Button>

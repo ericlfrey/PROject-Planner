@@ -22,6 +22,7 @@ export default function MaterialDetails({ firebaseKey }) {
       deleteMaterial(firebaseKey).then(router.push(`/project/${project.firebaseKey}`));
     }
   };
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
@@ -30,7 +31,6 @@ export default function MaterialDetails({ firebaseKey }) {
         <Card.Subtitle className="mb-2 text-muted">{material.acquired ? 'Acquired' : 'Not Acquired'}</Card.Subtitle>
         <Card.Subtitle className="mb-2 text-muted">Price: {material.price}</Card.Subtitle>
         <Card.Subtitle className="mb-2 text-muted">Quantity: {material.quantity}</Card.Subtitle>
-
         <Link passHref href={`/material/edit/${firebaseKey}`}>
           <Card.Link href="#">Edit</Card.Link>
         </Link>

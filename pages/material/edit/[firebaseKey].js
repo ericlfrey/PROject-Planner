@@ -13,12 +13,16 @@ export default function EditMaterialPage() {
   useEffect(() => {
     getSingleMaterial(firebaseKey).then(setMaterial);
   }, [firebaseKey]);
+
   return (
     <>
       <Head>
         <title>Edit {`${material.material_name}`}</title>
       </Head>
-      <MaterialForm materialObj={material} projectFirebaseKey={material.project_id} />
+      <MaterialForm
+        materialObj={material}
+        projectFirebaseKey={material.project_id}
+      />
     </>
   );
 }
