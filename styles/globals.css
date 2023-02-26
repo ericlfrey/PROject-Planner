@@ -31,7 +31,7 @@ body {
   background-color: #fefbe9;
 }
 
-body::before {
+/* body::before {
   content: "";
   background-image: url("../public/images/paper.jpeg");
   background-size: cover;
@@ -41,14 +41,8 @@ body::before {
   bottom: 0px;
   left: 0px;
   opacity: 0.3;
-}
+} */
 
-.navbar-nav {
-  width: 100%;
+/* .nav-links {
   display: flex;
-  justify-content: space-between;
-}
-
-.nav-links {
-  display: flex;
-}
+} */
