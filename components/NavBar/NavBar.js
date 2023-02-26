@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
-import { signOut } from '../utils/auth';
-import SearchBar from './SearchBar/SearchBar';
+import { signOut } from '../../utils/auth';
+import SearchBar from '../SearchBar/SearchBar';
+import styles from './NavBar.module.css';
 
 export default function NavBar() {
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav className={`navbar navbar-expand-md ${styles.navbar}`}>
       <div className="container-fluid">
         <Link passHref href="/">
           <a className="navbar-brand">
