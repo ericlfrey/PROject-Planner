@@ -2,11 +2,12 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Card } from 'react-bootstrap';
+import { Card, Dropdown } from 'react-bootstrap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { deleteProjectDetails } from '../../api/mergedData';
 import { getProjectMaterials } from '../../api/materialData';
+import styles from './ProjectDetails.module.css';
 
 export default function ProjectDetails({ project }) {
   const [materials, setMaterials] = useState([]);
@@ -32,25 +33,38 @@ export default function ProjectDetails({ project }) {
 
   return (
     <>
-      <Card>
-        <Card.Header className="text-end">
+      <Card className={styles.card}>
+        <Card.Body className={styles.cardBody}>
+          <blockquote className="blockquote mb-0">
+            <div className={styles.cardHeader}>
+              <h3>{project.title}</h3>
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Dropdown Button
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <footer className={`${styles.cardSubtitle} blockquote-footer mt-2`}>
+              Date Added: {displayDate.toLocaleDateString()}
+            </footer>
+            <footer className={`${styles.cardSubtitle} blockquote-footer`}>
+              Total Estimated Costs: ${totalCost}
+            </footer>
+          </blockquote>
+        </Card.Body>
+        <Card.Footer className={styles.cardFooter}>
           <Link passHref href={`./edit/${project.firebaseKey}`}>
             Edit
           </Link>
           <Card.Link onClick={handleDelete}> Delete
           </Card.Link>
-        </Card.Header>
-        <Card.Body>
-          <blockquote className="blockquote mb-0">
-            <h3>{project.title}</h3>
-            <footer className="blockquote-footer mt-2">
-              Date Added: {displayDate.toLocaleDateString()}
-            </footer>
-            <footer className="blockquote-footer">
-              Total Estimated Costs: ${totalCost}
-            </footer>
-          </blockquote>
-        </Card.Body>
+        </Card.Footer>
       </Card>
     </>
   );

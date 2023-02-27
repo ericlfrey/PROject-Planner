@@ -7,6 +7,9 @@
 #E1EEDD Light Blue rgb(225, 238, 221)
 #FEFBE9 Off White  rgb(254, 251, 233)
 */
+* {
+  color: #183A1D;
+}
 
 html,
 body {
@@ -33,8 +36,3 @@ body {
   width: 100%;
   background-color: #fefbe9;
 }
-
-/* #searchBtn:active {
-  background-color: #68B984;
-  border: solid 1px #68B984;
-} */
