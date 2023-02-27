@@ -39,14 +39,19 @@ export default function ProjectDetails({ project }) {
             <div className={styles.cardHeader}>
               <h3>{project.title}</h3>
               <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Dropdown Button
+                <Dropdown.Toggle variant="outline-success" className={styles.cardActionsBtn}>
+                  Actions
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                  <Link passHref href={`./edit/${project.firebaseKey}`}>
+                    <Dropdown.Item>Edit Project Name</Dropdown.Item>
+                  </Link>
+                  <Dropdown.Item>Add Task</Dropdown.Item>
+                  <Dropdown.Item>Add Material</Dropdown.Item>
+                  <Card.Link onClick={handleDelete}>
+                    <Dropdown.Item>Delete Project</Dropdown.Item>
+                  </Card.Link>
                 </Dropdown.Menu>
               </Dropdown>
             </div>
@@ -58,13 +63,6 @@ export default function ProjectDetails({ project }) {
             </footer>
           </blockquote>
         </Card.Body>
-        <Card.Footer className={styles.cardFooter}>
-          <Link passHref href={`./edit/${project.firebaseKey}`}>
-            Edit
-          </Link>
-          <Card.Link onClick={handleDelete}> Delete
-          </Card.Link>
-        </Card.Footer>
       </Card>
     </>
   );

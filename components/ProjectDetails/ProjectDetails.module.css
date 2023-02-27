@@ -17,3 +17,20 @@
 .cardSubtitle {
   color: #68B984;
 }
+
+.cardActionsBtn {
+  all: unset;
+  font-size: 18px;
+  color: #183A1D;
+}
+
+.cardActionsBtn:hover,
+.cardActionsBtn:focus,
+.cardActionsBtn:active,
+.cardActionsBtn:focus-visible {
+  all: unset;
+  font-size: 18px;
+  background-color: transparent !important;
+  color: #183A1D !important;
+  box-shadow: none !important;
+}
