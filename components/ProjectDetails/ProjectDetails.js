@@ -43,14 +43,14 @@ export default function ProjectDetails({ project }) {
                   Actions
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
+                <Dropdown.Menu className={styles.dropdownMenu}>
                   <Link passHref href={`./edit/${project.firebaseKey}`}>
-                    <Dropdown.Item>Edit Project Name</Dropdown.Item>
+                    <Dropdown.Item className={styles.dropdownItem}>Edit Project Name</Dropdown.Item>
                   </Link>
-                  <Dropdown.Item>Add Task</Dropdown.Item>
-                  <Dropdown.Item>Add Material</Dropdown.Item>
+                  <Dropdown.Item className={styles.dropdownItem}>Add Task</Dropdown.Item>
+                  <Dropdown.Item className={styles.dropdownItem}>Add Material</Dropdown.Item>
                   <Card.Link onClick={handleDelete}>
-                    <Dropdown.Item>Delete Project</Dropdown.Item>
+                    <Dropdown.Item className={styles.dropdownItem}>Delete Project</Dropdown.Item>
                   </Card.Link>
                 </Dropdown.Menu>
               </Dropdown>

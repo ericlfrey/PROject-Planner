@@ -28,9 +28,21 @@
 .cardActionsBtn:focus,
 .cardActionsBtn:active,
 .cardActionsBtn:focus-visible {
-  all: unset;
   font-size: 18px;
   background-color: transparent !important;
   color: #183A1D !important;
   box-shadow: none !important;
+}
+
+.dropdownMenu {
+  background-color: #E1EEDD;
+}
+
+.dropdownItem {
+  color: #183A1D;
+  font-size: 18px;
+}
+
+.dropdownItem:hover {
+  background-color: #68B984;
 }
