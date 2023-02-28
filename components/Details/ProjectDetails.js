@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { deleteProjectDetails } from '../../api/mergedData';
 import { getProjectMaterials } from '../../api/materialData';
-import styles from './ProjectDetails.module.css';
+// import styles from './ProjectDetails.module.css';
 import cardStyles from '../../styles/CardStyles.module.css';
 
 export default function ProjectDetails({ project }) {
@@ -34,10 +34,10 @@ export default function ProjectDetails({ project }) {
 
   return (
     <>
-      <Card className={styles.card}>
-        <Card.Body className={styles.cardBody}>
+      <Card className={cardStyles.topCard}>
+        <Card.Body>
           <blockquote className="blockquote mb-0">
-            <div className={styles.cardHeader}>
+            <div className={cardStyles.cardHeader}>
               <h3>{project.title}</h3>
               <Dropdown>
                 <Dropdown.Toggle variant="outline-success" className={cardStyles.cardActionsBtn}>
@@ -58,10 +58,10 @@ export default function ProjectDetails({ project }) {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-            <footer className={`${styles.cardSubtitle} blockquote-footer mt-2`}>
+            <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>
               Date Added: {displayDate.toLocaleDateString()}
             </footer>
-            <footer className={`${styles.cardSubtitle} blockquote-footer`}>
+            <footer className={`${cardStyles.cardSubtitle} blockquote-footer`}>
               Total Estimated Costs: ${totalCost}
             </footer>
           </blockquote>

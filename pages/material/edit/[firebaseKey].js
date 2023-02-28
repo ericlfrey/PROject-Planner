@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSingleMaterial } from '../../../api/materialData';
-import MaterialForm from '../../../components/MaterialForm/MaterialForm';
+import MaterialForm from '../../../components/Forms/MaterialForm';
 
 export default function EditMaterialPage() {
   const [material, setMaterial] = useState({});

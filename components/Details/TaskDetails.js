@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { deleteTask, getSingleTask } from '../../api/taskData';
 import { getSingleProject } from '../../api/projectData';
-import styles from './TaskDetails.module.css';
+// import styles from './TaskDetails.module.css';
 import cardStyles from '../../styles/CardStyles.module.css';
 
 export default function TaskDetails({ firebaseKey }) {
@@ -26,10 +26,10 @@ export default function TaskDetails({ firebaseKey }) {
   };
 
   return (
-    <Card className={styles.card}>
+    <Card className={cardStyles.topCard}>
       <Card.Body>
         <blockquote className="blockquote mb-0">
-          <div className={styles.cardHeader}>
+          <div className={cardStyles.cardHeader}>
             <h3>{task.task_name}</h3>
             <Dropdown>
               <Dropdown.Toggle variant="outline-success" className={cardStyles.cardActionsBtn}>
@@ -44,14 +44,14 @@ export default function TaskDetails({ firebaseKey }) {
               </Dropdown.Menu>
             </Dropdown>
           </div>
-          <footer className={`${styles.cardSubtitle} blockquote-footer mt-2`}>Project: {project.title}</footer>
-          <footer className={`${styles.cardSubtitle} blockquote-footer mt-2`}>Date Created: {new Date(task.date_created).toLocaleDateString()}</footer>
-          <footer className={`${styles.cardSubtitle} blockquote-footer mt-2`}>{task.due_date ? `Due Date: ${task.due_date}` : 'No due date'}</footer>
+          <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>Project: {project.title}</footer>
+          <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>Date Created: {new Date(task.date_created).toLocaleDateString()}</footer>
+          <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>{task.due_date ? `Due Date: ${task.due_date}` : 'No due date'}</footer>
           <hr />
           <h4>Task Details:</h4>
-          <Card.Text className={styles.cardText}>{task.details}</Card.Text>
+          <Card.Text className={cardStyles.cardText}>{task.details}</Card.Text>
           <Link passHref href={`/project/${task.project_id}`}>
-            <Card.Link className={styles.cardLink}> ← Go Back</Card.Link>
+            <Card.Link className={cardStyles.cardLink}> ← Go Back</Card.Link>
           </Link>
         </blockquote>
       </Card.Body>

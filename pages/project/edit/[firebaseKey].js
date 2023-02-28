@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSingleProject } from '../../../api/projectData';
-import ProjectForm from '../../../components/ProjectForm/ProjectForm';
+import ProjectForm from '../../../components/Forms/ProjectForm';
 
 export default function EditProjectPage() {
   const [project, setProject] = useState({});

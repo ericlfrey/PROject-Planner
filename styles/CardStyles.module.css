@@ -1,8 +1,23 @@
+.topCard {
+  margin-top: 20px;
+  background-color: transparent;
+  border: none;
+}
+
 .card {
   background-color: transparent;
   border: none;
   border-radius: 0;
   border-bottom: solid 1px #68B984;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardSubtitle {
+  color: #68B984;
 }
 
 .cardDropdown {
