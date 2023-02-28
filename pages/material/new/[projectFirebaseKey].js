@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSingleProject } from '../../../api/projectData';
-import MaterialForm from '../../../components/MaterialForm/MaterialForm';
+import MaterialForm from '../../../components/Forms/MaterialForm';
 
 export default function AddMaterialPage() {
   const [project, setProject] = useState({});

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSingleProject } from '../../../api/projectData';
-import TaskForm from '../../../components/TaskForm/TaskForm';
+import TaskForm from '../../../components/Forms/TaskForm';
 
 export default function AddTaskPage() {
   const [project, setProject] = useState({});

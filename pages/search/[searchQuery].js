@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getAllProjectsDetails } from '../../api/mergedData';
-import ProjectCard from '../../components/ProjectCard/ProjectCard';
+import ProjectCard from '../../components/Cards/ProjectCard';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function SearchPage() {
