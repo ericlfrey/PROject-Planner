@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, InputGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { createProject, updateProject } from '../../api/projectData';
 import { useAuth } from '../../utils/context/authContext';
+import formStyles from '../../styles/FormStyles.module.css';
 
 const initialState = {
   title: '',
@@ -45,22 +46,25 @@ export default function ProjectForm({ projectObj }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>{projectObj.firebaseKey ? 'Edit' : 'Add a new'} Project</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter New Project Name"
-          name="title"
-          value={formInput.title}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+    <div className={formStyles.formContainer}>
+      <Form onSubmit={handleSubmit} className={formStyles.form}>
+        <Form.Label className={formStyles.formLabel}>{projectObj.firebaseKey ? 'Edit Project Name' : 'Add a new Project'}</Form.Label>
+        <InputGroup className="m-auto">
+          <Form.Control
+            className={formStyles.formInputField}
+            type="text"
+            placeholder="Enter New Project Name"
+            name="title"
+            value={formInput.title}
+            onChange={handleChange}
+            required
+          />
+          <Button variant="primary" type="submit" className={formStyles.formBtn}>
+            {projectObj.firebaseKey ? 'Edit' : 'Add'}
+          </Button>
+        </InputGroup>
+      </Form>
+    </div>
   );
 }
 
