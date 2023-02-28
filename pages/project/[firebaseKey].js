@@ -40,7 +40,7 @@ export default function ViewProjectPage() {
       </div>
       {/* <hr /> */}
       <h2>materials:</h2>
-      <div className="d-flex flex-wrap justify-content-center">
+      <div>
         {project.projectMaterials?.map((material) => (
           <MaterialCard
             key={material.firebaseKey}

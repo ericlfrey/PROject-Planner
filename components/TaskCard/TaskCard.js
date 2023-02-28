@@ -6,7 +6,6 @@ import {
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { deleteTask } from '../../api/taskData';
-import styles from './TaskCard.module.css';
 import cardStyles from '../../styles/CardStyles.module.css';
 
 export default function TaskCard({ taskObj, onChange }) {
@@ -17,12 +16,12 @@ export default function TaskCard({ taskObj, onChange }) {
   };
 
   return (
-    <Card className={styles.card}>
+    <Card className={cardStyles.card}>
       <Card.Body>
         <Row>
           <Col>
             <Link passHref href={`/task/${taskObj.firebaseKey}`}>
-              <Card.Link className={styles.cardLink}>{taskObj.task_name}</Card.Link>
+              <Card.Link className={cardStyles.cardLink}>{taskObj.task_name}</Card.Link>
             </Link>
           </Col>
           <Col>
@@ -35,7 +34,7 @@ export default function TaskCard({ taskObj, onChange }) {
               Due Date: {taskObj.due_date ? new Date(taskObj.due_date).toLocaleDateString() : 'No date set'}
             </Card.Text>
           </Col>
-          <Col className={styles.taskDropdown}>
+          <Col className={cardStyles.cardDropdown}>
             <Dropdown>
               <Dropdown.Toggle className={cardStyles.cardActionsBtn} variant="success" />
               <Dropdown.Menu className={cardStyles.dropdownMenu}>
