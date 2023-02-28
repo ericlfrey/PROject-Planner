@@ -24,10 +24,10 @@ export default function MaterialCard({ materialObj, onChange }) {
             </Link>
           </Col>
           <Col>
-            <Card.Text>Task Name</Card.Text>
+            <Card.Text>Status: {materialObj.acquired ? 'Acquired' : 'Not Acquired'}</Card.Text>
           </Col>
           <Col>
-            <Card.Text>Acquired?</Card.Text>
+            <Card.Text>Task Name</Card.Text>
           </Col>
           <Col className={cardStyles.cardDropdown}>
             <Dropdown>
