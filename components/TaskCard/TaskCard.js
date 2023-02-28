@@ -1,12 +1,13 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import {
-  Card, Col, Dropdown, DropdownButton, Row,
+  Card, Col, Dropdown, Row,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { deleteTask } from '../../api/taskData';
 import styles from './TaskCard.module.css';
+import cardStyles from '../../styles/CardStyles.module.css';
 
 export default function TaskCard({ taskObj, onChange }) {
   const handleDeleteTask = () => {
@@ -33,15 +34,18 @@ export default function TaskCard({ taskObj, onChange }) {
             </Card.Text>
           </Col>
           <Col className={styles.taskDropdown}>
-            <DropdownButton id="dropdown-basic-button" title="">
-              <Link passHref href={`/task/${taskObj.firebaseKey}`}>
-                <Dropdown.Item href="#/action-1">Details</Dropdown.Item>
-              </Link>
-              <Link passHref href={`/task/edit/${taskObj.firebaseKey}`}>
-                <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-              </Link>
-              <Dropdown.Item onClick={handleDeleteTask}>Delete</Dropdown.Item>
-            </DropdownButton>
+            <Dropdown>
+              <Dropdown.Toggle className={cardStyles.cardActionsBtn} variant="success" />
+              <Dropdown.Menu className={cardStyles.dropdownMenu}>
+                <Link passHref href={`/task/${taskObj.firebaseKey}`}>
+                  <Dropdown.Item className={cardStyles.dropdownItem}>Details</Dropdown.Item>
+                </Link>
+                <Link passHref href={`/task/edit/${taskObj.firebaseKey}`}>
+                  <Dropdown.Item className={cardStyles.dropdownItem}>Edit</Dropdown.Item>
+                </Link>
+                <Dropdown.Item className={cardStyles.dropdownItem} onClick={handleDeleteTask}>Delete</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Col>
         </Row>
         {/* <Link passHref href={`/task/${taskObj.firebaseKey}`}>

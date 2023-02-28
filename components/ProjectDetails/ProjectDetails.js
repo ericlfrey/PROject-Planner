@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import { deleteProjectDetails } from '../../api/mergedData';
 import { getProjectMaterials } from '../../api/materialData';
 import styles from './ProjectDetails.module.css';
+import cardStyles from '../../styles/CardStyles.module.css';
 
 export default function ProjectDetails({ project }) {
   const [materials, setMaterials] = useState([]);
@@ -39,22 +40,22 @@ export default function ProjectDetails({ project }) {
             <div className={styles.cardHeader}>
               <h3>{project.title}</h3>
               <Dropdown>
-                <Dropdown.Toggle variant="outline-success" className={styles.cardActionsBtn}>
+                <Dropdown.Toggle variant="outline-success" className={cardStyles.cardActionsBtn}>
                   Actions
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu className={styles.dropdownMenu}>
+                <Dropdown.Menu className={cardStyles.dropdownMenu}>
                   <Link passHref href={`/project/edit/${project.firebaseKey}`}>
-                    <Dropdown.Item className={styles.dropdownItem}>Edit Project Name</Dropdown.Item>
+                    <Dropdown.Item className={cardStyles.dropdownItem}>Edit Project Name</Dropdown.Item>
                   </Link>
                   <Link passHref href={`/task/new/${project.firebaseKey}`}>
-                    <Dropdown.Item className={styles.dropdownItem}>Add Task</Dropdown.Item>
+                    <Dropdown.Item className={cardStyles.dropdownItem}>Add Task</Dropdown.Item>
                   </Link>
                   <Link passHref href={`/material/new/${project.firebaseKey}`}>
-                    <Dropdown.Item className={styles.dropdownItem}>Add Material</Dropdown.Item>
+                    <Dropdown.Item className={cardStyles.dropdownItem}>Add Material</Dropdown.Item>
                   </Link>
                   <Card.Link onClick={handleDelete}>
-                    <Dropdown.Item className={styles.dropdownItem}>Delete Project</Dropdown.Item>
+                    <Dropdown.Item className={cardStyles.dropdownItem}>Delete Project</Dropdown.Item>
                   </Card.Link>
                 </Dropdown.Menu>
               </Dropdown>
