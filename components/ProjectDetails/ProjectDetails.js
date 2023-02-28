@@ -54,9 +54,7 @@ export default function ProjectDetails({ project }) {
                   <Link passHref href={`/material/new/${project.firebaseKey}`}>
                     <Dropdown.Item className={cardStyles.dropdownItem}>Add Material</Dropdown.Item>
                   </Link>
-                  {/* <Card.Link onClick={handleDelete}> */}
                   <Dropdown.Item className={cardStyles.dropdownItem} onClick={handleDelete}>Delete Project</Dropdown.Item>
-                  {/* </Card.Link> */}
                 </Dropdown.Menu>
               </Dropdown>
             </div>
