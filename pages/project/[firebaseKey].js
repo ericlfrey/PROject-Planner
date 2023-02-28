@@ -40,7 +40,7 @@ export default function ViewProjectPage() {
       </div>
       {/* <hr /> */}
       <h2>materials:</h2>
-      <div>
+      <div className="mb-5">
         {project.projectMaterials?.map((material) => (
           <MaterialCard
             key={material.firebaseKey}
