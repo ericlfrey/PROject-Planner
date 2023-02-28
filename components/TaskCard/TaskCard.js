@@ -18,10 +18,12 @@ export default function TaskCard({ taskObj, onChange }) {
 
   return (
     <Card className={styles.card}>
-      <Card.Body className={styles.cardBody}>
+      <Card.Body>
         <Row>
           <Col>
-            <Card.Title>{taskObj.task_name}</Card.Title>
+            <Link passHref href={`/task/${taskObj.firebaseKey}`}>
+              <Card.Link className={styles.cardLink}>{taskObj.task_name}</Card.Link>
+            </Link>
           </Col>
           <Col>
             <Card.Text>
@@ -48,13 +50,6 @@ export default function TaskCard({ taskObj, onChange }) {
             </Dropdown>
           </Col>
         </Row>
-        {/* <Link passHref href={`/task/${taskObj.firebaseKey}`}>
-          <Card.Link href="#">View</Card.Link>
-        </Link>
-        <Link passHref href={`/task/edit/${taskObj.firebaseKey}`}>
-          <Card.Link href="#">Edit</Card.Link>
-        </Link>
-        <Card.Link href="#" onClick={handleDeleteTask}>Delete</Card.Link> */}
       </Card.Body>
     </Card>
   );

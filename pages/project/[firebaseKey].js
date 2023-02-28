@@ -29,7 +29,7 @@ export default function ViewProjectPage() {
       <ProjectDetails project={project} />
       <hr />
       <h2>tasks:</h2>
-      <div>
+      <div className="mb-5">
         {project.projectTasks?.map((task) => (
           <TaskCard
             key={task.firebaseKey}
@@ -38,7 +38,7 @@ export default function ViewProjectPage() {
           />
         ))}
       </div>
-      <hr />
+      {/* <hr /> */}
       <h2>materials:</h2>
       <div className="d-flex flex-wrap justify-content-center">
         {project.projectMaterials?.map((material) => (
