@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { getProjectDetails } from '../../api/mergedData';
 import MaterialCard from '../../components/Cards/MaterialCard';
 import TaskCard from '../../components/Cards/TaskCard';
-import ProjectDetails from '../../components/ProjectDetails/ProjectDetails';
+import ProjectDetails from '../../components/Details/ProjectDetails';
 
 export default function ViewProjectPage() {
   const [project, setProject] = useState({});

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSingleTask } from '../../api/taskData';
-import TaskDetails from '../../components/TaskDetails/TaskDetails';
+import TaskDetails from '../../components/Details/TaskDetails';
 
 export default function ViewTaskPage() {
   const [task, setTask] = useState({});
