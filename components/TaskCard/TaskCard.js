@@ -62,7 +62,7 @@ TaskCard.propTypes = {
     details: PropTypes.string,
     date_created: PropTypes.string,
     due_date: PropTypes.string,
-    todo: PropTypes.string,
+    todo: PropTypes.bool,
     complete: PropTypes.bool,
     in_progress: PropTypes.bool,
   }).isRequired,

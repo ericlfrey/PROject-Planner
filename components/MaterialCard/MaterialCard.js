@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Card, Col, Dropdown, Row,
 } from 'react-bootstrap';
@@ -6,8 +6,15 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { deleteMaterial } from '../../api/materialData';
 import cardStyles from '../../styles/CardStyles.module.css';
+import { getSingleTask } from '../../api/taskData';
 
 export default function MaterialCard({ materialObj, onChange }) {
+  const [task, setTask] = useState({});
+
+  useEffect(() => {
+    getSingleTask(materialObj.task_id).then(setTask);
+  }, [materialObj.task_id]);
+
   const handleDeleteMaterial = () => {
     if (window.confirm(`Are you sure you want to delete "${materialObj.material_name}"? This task cannot be undone.`)) {
       deleteMaterial(materialObj.firebaseKey).then(onChange);
@@ -27,7 +34,7 @@ export default function MaterialCard({ materialObj, onChange }) {
             <Card.Text>Status: {materialObj.acquired ? 'Acquired' : 'Not Acquired'}</Card.Text>
           </Col>
           <Col>
-            <Card.Text>Task Name</Card.Text>
+            <Card.Text>Task: {task.task_name}</Card.Text>
           </Col>
           <Col className={cardStyles.cardDropdown}>
             <Dropdown>
@@ -46,13 +53,6 @@ export default function MaterialCard({ materialObj, onChange }) {
         </Row>
       </Card.Body>
     </Card>
-    //     <Link passHref href={`/material/${materialObj.firebaseKey}`}>
-    //     <Card.Link href="#">View</Card.Link>
-    //   </Link>
-    // <Link passHref href={`/material/edit/${materialObj.firebaseKey}`}>
-    //     <Card.Link href="#">Edit</Card.Link>
-    //   </Link>
-    // <Card.Link href="#" onClick={handleDeleteMaterial}>Delete</Card.Link>
   );
 }
 
