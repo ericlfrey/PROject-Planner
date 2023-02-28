@@ -2,11 +2,13 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Card } from 'react-bootstrap';
+import { Card, Dropdown } from 'react-bootstrap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { deleteProjectDetails } from '../../api/mergedData';
 import { getProjectMaterials } from '../../api/materialData';
+import styles from './ProjectDetails.module.css';
+import cardStyles from '../../styles/CardStyles.module.css';
 
 export default function ProjectDetails({ project }) {
   const [materials, setMaterials] = useState([]);
@@ -32,21 +34,36 @@ export default function ProjectDetails({ project }) {
 
   return (
     <>
-      <Card>
-        <Card.Header className="text-end">
-          <Link passHref href={`./edit/${project.firebaseKey}`}>
-            Edit
-          </Link>
-          <Card.Link onClick={handleDelete}> Delete
-          </Card.Link>
-        </Card.Header>
-        <Card.Body>
+      <Card className={styles.card}>
+        <Card.Body className={styles.cardBody}>
           <blockquote className="blockquote mb-0">
-            <h3>{project.title}</h3>
-            <footer className="blockquote-footer mt-2">
+            <div className={styles.cardHeader}>
+              <h3>{project.title}</h3>
+              <Dropdown>
+                <Dropdown.Toggle variant="outline-success" className={cardStyles.cardActionsBtn}>
+                  Actions
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu className={cardStyles.dropdownMenu}>
+                  <Link passHref href={`/project/edit/${project.firebaseKey}`}>
+                    <Dropdown.Item className={cardStyles.dropdownItem}>Edit Project Name</Dropdown.Item>
+                  </Link>
+                  <Link passHref href={`/task/new/${project.firebaseKey}`}>
+                    <Dropdown.Item className={cardStyles.dropdownItem}>Add Task</Dropdown.Item>
+                  </Link>
+                  <Link passHref href={`/material/new/${project.firebaseKey}`}>
+                    <Dropdown.Item className={cardStyles.dropdownItem}>Add Material</Dropdown.Item>
+                  </Link>
+                  <Card.Link onClick={handleDelete}>
+                    <Dropdown.Item className={cardStyles.dropdownItem}>Delete Project</Dropdown.Item>
+                  </Card.Link>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <footer className={`${styles.cardSubtitle} blockquote-footer mt-2`}>
               Date Added: {displayDate.toLocaleDateString()}
             </footer>
-            <footer className="blockquote-footer">
+            <footer className={`${styles.cardSubtitle} blockquote-footer`}>
               Total Estimated Costs: ${totalCost}
             </footer>
           </blockquote>

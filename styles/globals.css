@@ -7,6 +7,9 @@
 #E1EEDD Light Blue rgb(225, 238, 221)
 #FEFBE9 Off White  rgb(254, 251, 233)
 */
+* {
+  color: #183A1D;
+}
 
 html,
 body {
@@ -32,9 +35,6 @@ body {
   height: 100vh;
   width: 100%;
   background-color: #fefbe9;
+  /* background-image: url('../public/images/paper.jpeg');
+  background-size: cover; */
 }
-
-/* #searchBtn:active {
-  background-color: #68B984;
-  border: solid 1px #68B984;
-} */

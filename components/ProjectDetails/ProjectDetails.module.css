@@ -1,0 +1,19 @@
+.card {
+  margin-top: 20px;
+  background-color: transparent;
+  border: none;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardFooter {
+  background-color: transparent;
+  border: none;
+}
+
+.cardSubtitle {
+  color: #68B984;
+}

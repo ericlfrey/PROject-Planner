@@ -1,9 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from 'next/head';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { getProjectDetails } from '../../api/mergedData';
 import MaterialCard from '../../components/MaterialCard/MaterialCard';
 import ProjectDetails from '../../components/ProjectDetails/ProjectDetails';
@@ -31,10 +29,7 @@ export default function ViewProjectPage() {
       <ProjectDetails project={project} />
       <hr />
       <h2>tasks:</h2>
-      <Link passHref href={`/task/new/${firebaseKey}`}>
-        <Button>Add Task</Button>
-      </Link>
-      <div className="d-flex flex-wrap justify-content-center">
+      <div className="mb-5">
         {project.projectTasks?.map((task) => (
           <TaskCard
             key={task.firebaseKey}
@@ -43,12 +38,9 @@ export default function ViewProjectPage() {
           />
         ))}
       </div>
-      <hr />
+      {/* <hr /> */}
       <h2>materials:</h2>
-      <Link passHref href={`/material/new/${firebaseKey}`}>
-        <Button>Add Material</Button>
-      </Link>
-      <div className="d-flex flex-wrap justify-content-center">
+      <div>
         {project.projectMaterials?.map((material) => (
           <MaterialCard
             key={material.firebaseKey}
