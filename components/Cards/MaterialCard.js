@@ -5,8 +5,8 @@ import {
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { deleteMaterial } from '../../api/materialData';
-import cardStyles from '../../styles/CardStyles.module.css';
 import { getSingleTask } from '../../api/taskData';
+import cardStyles from '../../styles/CardStyles.module.css';
 
 export default function MaterialCard({ materialObj, onChange }) {
   const [task, setTask] = useState({});

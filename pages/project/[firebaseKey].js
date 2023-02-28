@@ -3,9 +3,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getProjectDetails } from '../../api/mergedData';
-import MaterialCard from '../../components/MaterialCard/MaterialCard';
+import MaterialCard from '../../components/Cards/MaterialCard';
+import TaskCard from '../../components/Cards/TaskCard';
 import ProjectDetails from '../../components/ProjectDetails/ProjectDetails';
-import TaskCard from '../../components/TaskCard/TaskCard';
 
 export default function ViewProjectPage() {
   const [project, setProject] = useState({});
