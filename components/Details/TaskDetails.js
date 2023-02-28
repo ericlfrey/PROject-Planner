@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { deleteTask, getSingleTask } from '../../api/taskData';
 import { getSingleProject } from '../../api/projectData';
-// import styles from './TaskDetails.module.css';
 import cardStyles from '../../styles/CardStyles.module.css';
 
 export default function TaskDetails({ firebaseKey }) {
