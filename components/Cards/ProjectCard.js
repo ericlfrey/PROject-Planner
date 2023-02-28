@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import Link from 'next/link';
-import styles from './ProjectCard.module.css';
+import styles from '../../styles/ProjectCard.module.css';
 
 export default function ProjectCard({ projectObj }) {
   return (

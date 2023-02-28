@@ -3,7 +3,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { getUserProjects } from '../api/projectData';
-import ProjectCard from '../components/ProjectCard/ProjectCard';
+import ProjectCard from '../components/Cards/ProjectCard';
 import { useAuth } from '../utils/context/authContext';
 import styles from '../styles/Home.module.css';
 
