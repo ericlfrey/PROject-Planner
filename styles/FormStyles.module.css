@@ -1,0 +1,40 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  width: 50%;
+}
+
+.formInputField {
+  background-color: #ddd9c4;
+  border: none;
+  color: #183A1D;
+}
+
+.formInputField:focus {
+  background-color: #ddd9c4;
+  box-shadow: none;
+  border: none;
+  color: #183A1D;
+}
+
+.formInputField::placeholder {
+  color: #5ca776;
+}
+
+.formBtn {
+  background-color: #183A1D;
+  border: solid 1px #183A1D;
+  color: #E1EEDD;
+}
+
+.formBtn:hover,
+.formBtn:active {
+  background-color: #68B984 !important;
+  border: solid 1px #68B984 !important;
+}
