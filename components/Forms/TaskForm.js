@@ -60,6 +60,7 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
             name="task_name"
             value={formInput.task_name}
             onChange={handleChange}
+            autoComplete="off"
             required
           />
         </Form.Group>
@@ -72,6 +73,7 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
             name="details"
             value={formInput.details}
             onChange={handleChange}
+            autoComplete="off"
           />
         </Form.Group>
         <Form.Group className="mb-3">

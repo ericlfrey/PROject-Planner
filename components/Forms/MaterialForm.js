@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { getProjectTasks } from '../../api/taskData';
 import { createMaterial, updateMaterial } from '../../api/materialData';
+import formStyles from '../../styles/FormStyles.module.css';
 
 const initialState = {
   firebaseKey: '',
@@ -48,34 +49,38 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
   };
 
   return (
-    <>
-      <h1>{materialObj.firebaseKey ? 'Edit' : 'Add'} Material</h1>
-      <Form onSubmit={handleSubmit}>
+    <div className={formStyles.formContainer}>
+      <Form onSubmit={handleSubmit} className={formStyles.form}>
         <Form.Group className="mb-3">
           <Form.Label>Material Name</Form.Label>
           <Form.Control
+            className={formStyles.formInputField}
             type="text"
             placeholder="Material Name"
             name="material_name"
             value={formInput.material_name}
             onChange={handleChange}
+            autoComplete="off"
             required
           />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Price</Form.Label>
           <Form.Control
+            className={formStyles.formInputField}
             type="text"
             placeholder="Price"
             name="price"
             value={formInput.price}
             onChange={handleChange}
+            autoComplete="off"
             required
           />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Quantity</Form.Label>
           <Form.Control
+            className={formStyles.formInputField}
             type="number"
             placeholder="Quantity"
             name="quantity"
@@ -83,15 +88,16 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
             step="1"
             value={formInput.quantity}
             onChange={handleChange}
+            autoComplete="off"
             required
           />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Assign to Task</Form.Label>
           <Form.Select
+            className={formStyles.formInputField}
             name="task_id"
             onChange={handleChange}
-            className="mb-3"
             value={formInput.task_id}
             required
           >
@@ -126,11 +132,13 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
             </Form.Group>
           )
           : ''}
-        <Button variant="primary" type="submit">
-          {materialObj.firebaseKey ? 'Edit Material' : 'Add Material'}
-        </Button>
+        <div>
+          <Button variant="success" type="submit" className={formStyles.formBtn}>
+            {materialObj.firebaseKey ? 'Edit Material' : 'Add Material'}
+          </Button>
+        </div>
       </Form>
-    </>
+    </div>
   );
 }
 
