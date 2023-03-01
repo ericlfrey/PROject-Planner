@@ -50,3 +50,20 @@ body {
   border-color: #183A1D;
   box-shadow: none;
 }
+
+.signin-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.signin-btn {
+  all: unset;
+  color: #183A1D;
+  margin-top: 30px;
+}
+
+.signin-btn:hover {
+  color: #327a3d;
+}
