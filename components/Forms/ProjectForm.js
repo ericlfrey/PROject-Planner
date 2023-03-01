@@ -57,6 +57,7 @@ export default function ProjectForm({ projectObj }) {
             name="title"
             value={formInput.title}
             onChange={handleChange}
+            autoComplete="off"
             required
           />
           <Button variant="success" type="submit" className={formStyles.formBtn}>
