@@ -35,6 +35,18 @@ body {
   height: 100vh;
   width: 100%;
   background-color: #fefbe9;
-  /* background-image: url('../public/images/paper.jpeg');
-  background-size: cover; */
+}
+
+/* Styles for the form checks- could not get them in the module */
+.form-check-input {
+  background-color: #ddd9c4;
+  border-color: #183A1D;
+  box-shadow: brown
+}
+
+.form-check-input:checked,
+.form-check-input:focus {
+  background-color: #183A1D;
+  border-color: #183A1D;
+  box-shadow: none;
 }

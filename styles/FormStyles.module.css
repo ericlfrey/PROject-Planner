@@ -12,14 +12,14 @@
 
 .formInputField {
   background-color: #ddd9c4;
-  border: none;
+  border: solid 1px #183A1D;
   color: #183A1D;
 }
 
 .formInputField:focus {
   background-color: #ddd9c4;
   box-shadow: none;
-  border: none;
+  border: solid 1px #183A1D;
   color: #183A1D;
 }
 
@@ -36,5 +36,5 @@
 .formBtn:hover,
 .formBtn:active {
   background-color: #68B984 !important;
-  border: solid 1px #68B984 !important;
+  border: solid 1px #183A1D !important;
 }
