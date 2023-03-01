@@ -68,7 +68,9 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
           <Form.Label>Price</Form.Label>
           <Form.Control
             className={formStyles.formInputField}
-            type="text"
+            type="number"
+            min=".01"
+            step=".01"
             placeholder="Price"
             name="price"
             value={formInput.price}
