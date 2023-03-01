@@ -91,28 +91,32 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Assign to Task</Form.Label>
-          <Form.Select
-            className={formStyles.formInputField}
-            name="task_id"
-            onChange={handleChange}
-            value={formInput.task_id}
-            required
-          >
-            <option value="">Choose</option>
-            {
-              projectTasks.map((task) => (
-                <option
-                  key={task.firebaseKey}
-                  value={task.firebaseKey}
-                >
-                  {task.task_name}
-                </option>
-              ))
-            }
-          </Form.Select>
-        </Form.Group>
+        {projectTasks.length
+          ? (
+            <Form.Group className="mb-3">
+              <Form.Label>Assign to Task</Form.Label>
+              <Form.Select
+                className={formStyles.formInputField}
+                name="task_id"
+                onChange={handleChange}
+                value={formInput.task_id}
+                required
+              >
+                <option value="">Choose</option>
+                {
+                  projectTasks.map((task) => (
+                    <option
+                      key={task.firebaseKey}
+                      value={task.firebaseKey}
+                    >
+                      {task.task_name}
+                    </option>
+                  ))
+                }
+              </Form.Select>
+            </Form.Group>
+          )
+          : ''}
         {materialObj.firebaseKey
           ? (
             <Form.Group className="mb-3">

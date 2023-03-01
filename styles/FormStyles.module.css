@@ -23,10 +23,6 @@
   color: #183A1D;
 }
 
-.formInputField::placeholder {
-  color: #5ca776;
-}
-
 .formBtn {
   background-color: #183A1D;
   border: solid 1px #183A1D;
