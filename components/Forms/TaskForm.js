@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { createTask, updateTask } from '../../api/taskData';
+import formStyles from '../../styles/FormStyles.module.css';
 
 const initialState = {
   firebaseKey: '',
@@ -47,12 +48,13 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
   };
 
   return (
-    <>
-      <h1>{taskObj.firebaseKey ? 'Edit' : 'Add'} Task</h1>
-      <Form onSubmit={handleSubmit}>
+    <div className={formStyles.formContainer}>
+      <Form onSubmit={handleSubmit} className={formStyles.form}>
+        {/* <Form.Label>{taskObj.firebaseKey ? 'Edit' : 'Add'} Task</Form.Label> */}
         <Form.Group className="mb-3">
           <Form.Label>Task Name</Form.Label>
           <Form.Control
+            className={formStyles.formInputField}
             type="text"
             placeholder="Task Name"
             name="task_name"
@@ -64,6 +66,7 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
         <Form.Group className="mb-3">
           <Form.Label>Details</Form.Label>
           <Form.Control
+            className={formStyles.formInputField}
             as="textarea"
             rows={3}
             name="details"
@@ -74,6 +77,7 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
         <Form.Group className="mb-3">
           <Form.Label>Due Date</Form.Label>
           <Form.Control
+            className={formStyles.formInputField}
             type="date"
             name="due_date"
             value={formInput.due_date}
@@ -136,11 +140,13 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
               </div>
             </Form.Group>
           )}
-        <Button variant="primary" type="submit">
-          {taskObj.firebaseKey ? 'Edit Task' : 'Add Task'}
-        </Button>
+        <div>
+          <Button variant="success" type="submit" className={formStyles.formBtn}>
+            {taskObj.firebaseKey ? 'Edit Task' : 'Add Task'}
+          </Button>
+        </div>
       </Form>
-    </>
+    </div>
   );
 }
 
