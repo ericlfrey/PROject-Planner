@@ -46,9 +46,10 @@ export default function MaterialDetails({ firebaseKey }) {
               </Dropdown.Menu>
             </Dropdown>
           </div>
+          <hr />
           <h5>Total Material Cost: ${(material.price * material.quantity).toFixed(2)}</h5>
           <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>Project: {project.title}</footer>
-          <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>Task: {task.task_name}</footer>
+          <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>Task: {task.task_name ? task.task_name : 'Not assigned to task'}</footer>
           <hr />
           <Card.Text className={`${cardStyles.cardText} mt-2`}>Status: {material.acquired ? 'Acquired' : 'Not Acquired'}</Card.Text>
           <Card.Text className={`${cardStyles.cardText} mt-2`}>Price: ${material.price}</Card.Text>
