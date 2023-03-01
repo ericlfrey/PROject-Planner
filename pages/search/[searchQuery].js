@@ -21,7 +21,6 @@ export default function SearchPage() {
         || project.projectTasks.some((task) => task.task_name.toLowerCase().includes(searchQuery))
         || project.title.toLowerCase().includes(searchQuery));
       setProjects(filteredProjectsArr);
-      console.warn(filteredProjectsArr);
     });
   }, [searchQuery]);
 
