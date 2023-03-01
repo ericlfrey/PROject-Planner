@@ -24,11 +24,13 @@
 
 .navLinks {
   display: flex;
+  justify-content: flex-start;
 }
 
 .navLink,
 .navLink:focus {
   color: #183A1D;
+  margin-right: 30px;
 }
 
 .navLink:hover,
