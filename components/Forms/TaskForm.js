@@ -50,13 +50,11 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
   return (
     <div className={formStyles.formContainer}>
       <Form onSubmit={handleSubmit} className={formStyles.form}>
-        {/* <Form.Label>{taskObj.firebaseKey ? 'Edit' : 'Add'} Task</Form.Label> */}
         <Form.Group className="mb-3">
           <Form.Label>Task Name</Form.Label>
           <Form.Control
             className={formStyles.formInputField}
             type="text"
-            placeholder="Task Name"
             name="task_name"
             value={formInput.task_name}
             onChange={handleChange}

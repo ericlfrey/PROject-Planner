@@ -56,7 +56,6 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
           <Form.Control
             className={formStyles.formInputField}
             type="text"
-            placeholder="Material Name"
             name="material_name"
             value={formInput.material_name}
             onChange={handleChange}
@@ -71,7 +70,6 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
             type="number"
             min=".01"
             step=".01"
-            placeholder="Price"
             name="price"
             value={formInput.price}
             onChange={handleChange}
@@ -84,7 +82,6 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
           <Form.Control
             className={formStyles.formInputField}
             type="number"
-            placeholder="Quantity"
             name="quantity"
             min="1"
             step="1"
@@ -103,7 +100,7 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
             value={formInput.task_id}
             required
           >
-            <option value="">Assign to Task</option>
+            <option value="">Choose</option>
             {
               projectTasks.map((task) => (
                 <option

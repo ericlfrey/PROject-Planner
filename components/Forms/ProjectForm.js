@@ -48,12 +48,11 @@ export default function ProjectForm({ projectObj }) {
   return (
     <div className={formStyles.formContainer}>
       <Form onSubmit={handleSubmit} className={formStyles.form}>
-        <Form.Label>{projectObj.firebaseKey ? 'Edit Project Name' : 'Add a new Project'}</Form.Label>
+        <Form.Label>{projectObj.firebaseKey ? 'Edit Project Name' : 'Enter Project Name'}</Form.Label>
         <InputGroup className="m-auto">
           <Form.Control
             className={formStyles.formInputField}
             type="text"
-            placeholder="Enter New Project Name"
             name="title"
             value={formInput.title}
             onChange={handleChange}
@@ -61,7 +60,7 @@ export default function ProjectForm({ projectObj }) {
             required
           />
           <Button variant="success" type="submit" className={formStyles.formBtn}>
-            {projectObj.firebaseKey ? 'Edit' : 'Add'}
+            {projectObj.firebaseKey ? 'Edit' : '+'}
           </Button>
         </InputGroup>
       </Form>
