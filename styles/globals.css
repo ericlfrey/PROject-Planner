@@ -7,6 +7,10 @@
 #E1EEDD Light Blue rgb(225, 238, 221)
 #FEFBE9 Off White  rgb(254, 251, 233)
 */
+/* :root {
+  --orange: #F0A04B
+} */
+
 * {
   color: #183A1D;
 }
@@ -55,7 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .signin-btn {
@@ -67,3 +71,7 @@ body {
 .signin-btn:hover {
   color: #327a3d;
 }
+
+/* h4 {
+  color: var(--orange);
+} */

@@ -21,6 +21,10 @@
   color: #68B984;
 }
 
+/* .cardText {
+  color: #F0A04B;
+} */
+
 .cardDropdown {
   display: flex;
   justify-content: flex-end;
