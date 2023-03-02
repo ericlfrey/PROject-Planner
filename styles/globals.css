@@ -1,18 +1,16 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 
-/* color pallette: 
-#183A1D Dark Green rgb(24, 58, 29)
-#68B984 Light Green rgb(104, 185, 132)
-#F0A04B Orange rgb(240, 160, 75)
-#E1EEDD Light Blue rgb(225, 238, 221)
-#FEFBE9 Off White  rgb(254, 251, 233)
-*/
-/* :root {
-  --orange: #F0A04B
-} */
+:root {
+  --dark-green: #183A1D;
+  --light-green: #68B984;
+  --light-blue: #E1EEDD;
+  --off-white: #FEFBE9;
+  --orange: #F0A04B;
+}
 
 * {
-  color: #183A1D;
+  color: var(--dark-green);
+  box-sizing: border-box;
 }
 
 html,
@@ -30,31 +28,27 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   position: relative;
   height: 100vh;
   width: 100%;
-  background-color: #fefbe9;
+  background-color: var(--off-white);
 }
 
 /* Styles for the form checks- could not get them in the module */
 .form-check-input {
-  background-color: #ddd9c4;
-  border-color: #183A1D;
-  box-shadow: brown
+  background-color: var(--off-white);
+  border-color: var(--dark-green);
 }
 
 .form-check-input:checked,
 .form-check-input:focus {
-  background-color: #183A1D;
-  border-color: #183A1D;
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
   box-shadow: none;
 }
 
+/* Styles for the Sign In Button  */
 .signin-div {
   display: flex;
   flex-direction: column;
@@ -64,14 +58,10 @@ body {
 
 .signin-btn {
   all: unset;
-  color: #183A1D;
+  color: var(--dark-green);
   margin-top: 30px;
 }
 
 .signin-btn:hover {
-  color: #327a3d;
+  color: var(--light-green);
 }
-
-/* h4 {
-  color: var(--orange);
-} */

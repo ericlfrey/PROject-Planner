@@ -50,7 +50,7 @@
 .cardActionsBtn:active,
 .cardActionsBtn:focus-visible {
   font-size: 18px;
-  background-color: transparent !important;
+  background-color: transparent;
   color: #68B984 !important;
   box-shadow: none !important;
 }
