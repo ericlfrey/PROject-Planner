@@ -25,12 +25,12 @@ export default function TaskCard({ taskObj, onChange }) {
             </Link>
           </Col>
           <Col>
-            <Card.Text>
+            <Card.Text className={cardStyles.cardText}>
               Status: {taskObj.todo ? 'Not Started' : taskObj.in_progress ? 'In Progress' : 'Complete'}
             </Card.Text>
           </Col>
           <Col>
-            <Card.Text>
+            <Card.Text className={cardStyles.cardText}>
               Due Date: {taskObj.due_date ? new Date(taskObj.due_date).toLocaleDateString() : 'No date set'}
             </Card.Text>
           </Col>

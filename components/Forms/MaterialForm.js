@@ -56,7 +56,6 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
           <Form.Control
             className={formStyles.formInputField}
             type="text"
-            placeholder="Material Name"
             name="material_name"
             value={formInput.material_name}
             onChange={handleChange}
@@ -71,7 +70,6 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
             type="number"
             min=".01"
             step=".01"
-            placeholder="Price"
             name="price"
             value={formInput.price}
             onChange={handleChange}
@@ -84,7 +82,6 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
           <Form.Control
             className={formStyles.formInputField}
             type="number"
-            placeholder="Quantity"
             name="quantity"
             min="1"
             step="1"
@@ -94,28 +91,32 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Assign to Task</Form.Label>
-          <Form.Select
-            className={formStyles.formInputField}
-            name="task_id"
-            onChange={handleChange}
-            value={formInput.task_id}
-            required
-          >
-            <option value="">Assign to Task</option>
-            {
-              projectTasks.map((task) => (
-                <option
-                  key={task.firebaseKey}
-                  value={task.firebaseKey}
-                >
-                  {task.task_name}
-                </option>
-              ))
-            }
-          </Form.Select>
-        </Form.Group>
+        {projectTasks.length
+          ? (
+            <Form.Group className="mb-3">
+              <Form.Label>Assign to Task</Form.Label>
+              <Form.Select
+                className={formStyles.formInputField}
+                name="task_id"
+                onChange={handleChange}
+                value={formInput.task_id}
+                required
+              >
+                <option value="">Choose</option>
+                {
+                  projectTasks.map((task) => (
+                    <option
+                      key={task.firebaseKey}
+                      value={task.firebaseKey}
+                    >
+                      {task.task_name}
+                    </option>
+                  ))
+                }
+              </Form.Select>
+            </Form.Group>
+          )
+          : ''}
         {materialObj.firebaseKey
           ? (
             <Form.Group className="mb-3">

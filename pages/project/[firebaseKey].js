@@ -28,7 +28,7 @@ export default function ViewProjectPage() {
       </Head>
       <ProjectDetails project={project} />
       <hr />
-      <h2>tasks:</h2>
+      <h4>Tasks:</h4>
       <div className="mb-5">
         {project.projectTasks?.map((task) => (
           <TaskCard
@@ -38,8 +38,7 @@ export default function ViewProjectPage() {
           />
         ))}
       </div>
-      {/* <hr /> */}
-      <h2>materials:</h2>
+      <h4><i>Materials:</i></h4>
       <div className="mb-5">
         {project.projectMaterials?.map((material) => (
           <MaterialCard
