@@ -40,7 +40,7 @@ export default function ProjectDetails({ project }) {
             <div className={cardStyles.cardHeader}>
               <h3>{project.title}</h3>
               <Dropdown>
-                <Dropdown.Toggle variant="outline-success" className={cardStyles.cardActionsBtn}>
+                <Dropdown.Toggle variant="outline-success" className={`toggle-btn ${cardStyles.cardActionsBtn}`}>
                   Actions
                 </Dropdown.Toggle>
 

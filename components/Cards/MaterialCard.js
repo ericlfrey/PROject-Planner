@@ -38,7 +38,7 @@ export default function MaterialCard({ materialObj, onChange }) {
           </Col>
           <Col className={cardStyles.cardDropdown}>
             <Dropdown>
-              <Dropdown.Toggle className={cardStyles.cardActionsBtn} variant="success" />
+              <Dropdown.Toggle className={`toggle-btn ${cardStyles.cardActionsBtn}`} variant="success" />
               <Dropdown.Menu className={cardStyles.dropdownMenu}>
                 <Link passHref href={`/material/${materialObj.firebaseKey}`}>
                   <Dropdown.Item className={cardStyles.dropdownItem}>Details</Dropdown.Item>

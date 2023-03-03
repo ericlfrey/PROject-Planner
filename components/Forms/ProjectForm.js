@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { Button, Form, InputGroup } from 'react-bootstrap';
+import { Form, InputGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { createProject, updateProject } from '../../api/projectData';
 import { useAuth } from '../../utils/context/authContext';
@@ -59,9 +59,9 @@ export default function ProjectForm({ projectObj }) {
             autoComplete="off"
             required
           />
-          <Button variant="success" type="submit" className={formStyles.formBtn}>
+          <button type="submit" className={formStyles.formBtn}>
             {projectObj.firebaseKey ? 'Edit' : '+'}
-          </Button>
+          </button>
         </InputGroup>
       </Form>
     </div>

@@ -26,11 +26,13 @@
 .formBtn {
   background-color: #183A1D;
   border: solid 1px #183A1D;
+  border-radius: 7px;
   color: #E1EEDD;
+  padding: 7.5px 15px;
 }
 
 .formBtn:hover,
 .formBtn:active {
-  background-color: #68B984 !important;
-  border: solid 1px #183A1D !important;
+  background-color: #68B984;
+  border: solid 1px #183A1D;
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { getProjectTasks } from '../../api/taskData';
@@ -136,9 +136,9 @@ export default function MaterialForm({ projectFirebaseKey, materialObj }) {
           )
           : ''}
         <div>
-          <Button variant="success" type="submit" className={formStyles.formBtn}>
+          <button type="submit" className={formStyles.formBtn}>
             {materialObj.firebaseKey ? 'Edit Material' : 'Add Material'}
-          </Button>
+          </button>
         </div>
       </Form>
     </div>

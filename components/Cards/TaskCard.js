@@ -36,7 +36,7 @@ export default function TaskCard({ taskObj, onChange }) {
           </Col>
           <Col className={cardStyles.cardDropdown}>
             <Dropdown>
-              <Dropdown.Toggle className={cardStyles.cardActionsBtn} variant="success" />
+              <Dropdown.Toggle className={`toggle-btn ${cardStyles.cardActionsBtn}`} variant="success" />
               <Dropdown.Menu className={cardStyles.dropdownMenu}>
                 <Link passHref href={`/task/${taskObj.firebaseKey}`}>
                   <Dropdown.Item className={cardStyles.dropdownItem}>Details</Dropdown.Item>

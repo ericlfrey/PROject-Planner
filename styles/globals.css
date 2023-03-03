@@ -65,3 +65,13 @@ body {
 .signin-btn:hover {
   color: var(--light-green);
 }
+
+/* From CardStyles.module.css - needed to be here to override Bootstrap Specificity */
+div.dropdown .toggle-btn:active,
+div.dropdown .toggle-btn:focus-visible {
+  all: unset;
+  font-size: 18px;
+  background-color: transparent;
+  color: var(--light-green);
+  box-shadow: none;
+}

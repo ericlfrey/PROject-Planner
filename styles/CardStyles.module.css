@@ -8,7 +8,7 @@
   background-color: transparent;
   border: none;
   border-radius: 0;
-  border-bottom: solid 1px #68B984;
+  border-bottom: solid 1px var(--light-green);
 }
 
 .cardHeader {
@@ -16,14 +16,13 @@
   justify-content: space-between;
 }
 
-.cardSubtitle,
-.cardText {
-  color: #68B984;
+.cardSubtitle {
+  color: var(--light-green);
 }
 
-/* .cardText {
-  color: #F0A04B;
-} */
+.cardText {
+  color: var(--orange);
+}
 
 .cardDropdown {
   display: flex;
@@ -31,32 +30,30 @@
 }
 
 .cardLink {
-  color: #183A1D;
+  color: var(--light-green);
   font-size: 25px;
 }
 
 .cardLink:hover {
-  color: #68B984;
+  color: var(--dark-green);
 }
 
 .cardActionsBtn {
   all: unset;
   font-size: 18px;
-  color: #183A1D;
+  color: var(--dark-green);
 }
 
 .cardActionsBtn:hover,
-.cardActionsBtn:focus,
-.cardActionsBtn:active,
-.cardActionsBtn:focus-visible {
+.cardActionsBtn:focus {
   font-size: 18px;
   background-color: transparent;
-  color: #68B984 !important;
-  box-shadow: none !important;
+  color: var(--light-green);
+  box-shadow: none;
 }
 
 .dropdownMenu {
-  background-color: #E1EEDD;
+  background-color: var(--off-white);
 }
 
 .dropdownItem {
@@ -65,5 +62,5 @@
 }
 
 .dropdownItem:hover {
-  background-color: #68B984;
+  background-color: var(--light-green);
 }
