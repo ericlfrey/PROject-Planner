@@ -11,21 +11,21 @@
 }
 
 .formInputField {
-  background-color: #ddd9c4;
-  border: solid 1px #183A1D;
-  color: #183A1D;
+  background-color: #f2efdf;
+  border: solid 1px var(--dark-green);
+  color: var(--dark-green);
 }
 
 .formInputField:focus {
   background-color: #ddd9c4;
   box-shadow: none;
-  border: solid 1px #183A1D;
-  color: #183A1D;
+  border: solid 1px var(--dark-green);
+  color: var(--dark-green);
 }
 
 .formBtn {
-  background-color: #183A1D;
-  border: solid 1px #183A1D;
+  background-color: var(--dark-green);
+  border: solid 1px var(--dark-green);
   border-radius: 7px;
   color: #E1EEDD;
   padding: 7.5px 15px;
@@ -33,6 +33,6 @@
 
 .formBtn:hover,
 .formBtn:active {
-  background-color: #68B984;
-  border: solid 1px #183A1D;
+  background-color: var(--light-green);
+  border: solid 1px var(--dark-green);
 }

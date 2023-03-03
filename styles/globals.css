@@ -37,7 +37,7 @@ body {
 
 /* Styles for the form checks- could not get them in the module */
 .form-check-input {
-  background-color: var(--off-white);
+  background-color: #f2efdf;
   border-color: var(--dark-green);
 }
 

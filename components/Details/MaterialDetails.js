@@ -34,7 +34,7 @@ export default function MaterialDetails({ firebaseKey }) {
           <div className={cardStyles.cardHeader}>
             <h3>{material.material_name}</h3>
             <Dropdown>
-              <Dropdown.Toggle variant="outline-success" className={cardStyles.cardActionsBtn}>
+              <Dropdown.Toggle variant="outline-success" className={`toggle-btn ${cardStyles.cardActionsBtn}`}>
                 Actions
               </Dropdown.Toggle>
               <Dropdown.Menu className={cardStyles.dropdownMenu}>
@@ -47,15 +47,16 @@ export default function MaterialDetails({ firebaseKey }) {
             </Dropdown>
           </div>
           <hr />
-          <h5>Total Material Cost: ${(material.price * material.quantity).toFixed(2)}</h5>
+          <h4>Total Material Cost: ${(material.price * material.quantity).toFixed(2)}</h4>
           <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>Project: {project.title}</footer>
           <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>Task: {task.task_name ? task.task_name : 'Not assigned to task'}</footer>
           <hr />
-          <Card.Text className={`${cardStyles.cardText} mt-2`}>Status: {material.acquired ? 'Acquired' : 'Not Acquired'}</Card.Text>
-          <Card.Text className={`${cardStyles.cardText} mt-2`}>Price: ${material.price}</Card.Text>
-          <Card.Text className={`${cardStyles.cardText} mt-2`}>Quantity: {material.quantity}</Card.Text>
+          <h4>Details:</h4>
+          <Card.Text className={`${cardStyles.detailsText} mt-2`}>Status: {material.acquired ? 'Acquired' : 'Not Acquired'}</Card.Text>
+          <Card.Text className={`${cardStyles.detailsText} mt-2`}>Price: ${material.price}</Card.Text>
+          <Card.Text className={`${cardStyles.detailsText} mt-2`}>Quantity: {material.quantity}</Card.Text>
           <Link passHref href={`/project/${material.project_id}`}>
-            <Card.Link className={cardStyles.cardLink}> ← Go Back</Card.Link>
+            <Card.Link className={cardStyles.goBackBtn}> ← Go Back</Card.Link>
           </Link>
         </blockquote>
       </Card.Body>

@@ -53,7 +53,7 @@
 }
 
 .dropdownMenu {
-  background-color: var(--off-white);
+  background-color: var(--light-blue);
 }
 
 .dropdownItem {
@@ -63,4 +63,18 @@
 
 .dropdownItem:hover {
   background-color: var(--light-green);
+}
+
+.detailsText {
+  color: var(--light-green);
+  margin-left: 25px;
+}
+
+.goBackBtn {
+  color: var(--dark-green);
+  font-size: 25px;
+}
+
+.goBackBtn:hover {
+  color: var(--light-green);
 }
