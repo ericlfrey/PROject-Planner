@@ -30,7 +30,7 @@ export default function ViewProjectPage() {
       <ProjectDetails project={project} />
       <hr />
       <h4 className={pagesStyles.projectDetailsCardHeading}>Tasks:</h4>
-      <div className="mb-5">
+      <div className={pagesStyles.projectDetailsTasksDiv}>
         {project.projectTasks?.map((task) => (
           <TaskCard
             key={task.firebaseKey}
@@ -40,7 +40,7 @@ export default function ViewProjectPage() {
         ))}
       </div>
       <h4 className={pagesStyles.projectDetailsCardHeading}>Materials:</h4>
-      <div className="mb-5">
+      <div className={pagesStyles.projectDetailsMaterialsDiv}>
         {project.projectMaterials?.map((material) => (
           <MaterialCard
             key={material.firebaseKey}
