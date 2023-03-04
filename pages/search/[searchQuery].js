@@ -30,7 +30,7 @@ export default function SearchPage() {
       <Head>
         <title>Search for "{`${searchQuery}`}"</title>
       </Head>
-      <h1>Search results for "{searchQuery}"</h1>
+      <h4 className={pagesStyles.pageHeading}>Search results for "{searchQuery}"</h4>
       <div className={pagesStyles.projectCardsDiv}>
         {projects.map((project) => <ProjectCard key={project.firebaseKey} projectObj={project} />)}
       </div>

@@ -1,7 +1,6 @@
-/* Home Page  */
-
-.homePageHeading {
+.pageHeading {
   margin-top: 25px;
+  text-align: center;
 }
 
 .projectCardsDiv {

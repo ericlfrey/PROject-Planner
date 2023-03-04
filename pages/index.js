@@ -20,7 +20,7 @@ function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <h4 className={pagesStyles.homePageHeading}>{user.displayName}'s Projects:</h4>
+      <h4 className={pagesStyles.pageHeading}>{user.displayName}'s Projects:</h4>
       <div className={pagesStyles.projectCardsDiv}>
         {projects.map((project) => (
           <ProjectCard
