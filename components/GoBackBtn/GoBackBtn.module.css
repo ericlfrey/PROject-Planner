@@ -1,0 +1,9 @@
+.goBackBtn {
+  all: unset;
+  color: var(--dark-green);
+  font-size: 25px;
+}
+
+.goBackBtn:hover {
+  color: var(--light-green);
+}

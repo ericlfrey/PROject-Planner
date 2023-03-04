@@ -46,25 +46,28 @@ export default function ProjectForm({ projectObj }) {
   };
 
   return (
-    <div className={formStyles.formContainer}>
-      <Form onSubmit={handleSubmit} className={formStyles.form}>
-        <Form.Label>{projectObj.firebaseKey ? 'Edit Project Name' : 'Enter Project Name'}</Form.Label>
-        <InputGroup className="m-auto">
-          <Form.Control
-            className={formStyles.formInputField}
-            type="text"
-            name="title"
-            value={formInput.title}
-            onChange={handleChange}
-            autoComplete="off"
-            required
-          />
-          <button type="submit" className={formStyles.formBtn}>
-            {projectObj.firebaseKey ? 'Edit' : '+'}
-          </button>
-        </InputGroup>
-      </Form>
-    </div>
+    <>
+      <div className={formStyles.formContainer}>
+        <Form onSubmit={handleSubmit} className={formStyles.form}>
+          <Form.Label>{projectObj.firebaseKey ? 'Edit Project Name' : 'Enter Project Name'}</Form.Label>
+          <InputGroup className="m-auto">
+            <Form.Control
+              className={formStyles.formInputField}
+              type="text"
+              name="title"
+              value={formInput.title}
+              onChange={handleChange}
+              autoComplete="off"
+              required
+            />
+            <button type="submit" className={formStyles.formBtn}>
+              {projectObj.firebaseKey ? 'Edit' : '+'}
+            </button>
+          </InputGroup>
+        </Form>
+      </div>
+      <button type="button" className={formStyles.goBackBtn} onClick={router.back}>← Go Back</button>
+    </>
   );
 }
 
