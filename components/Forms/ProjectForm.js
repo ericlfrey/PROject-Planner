@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { createProject, updateProject } from '../../api/projectData';
 import { useAuth } from '../../utils/context/authContext';
 import formStyles from '../../styles/FormStyles.module.css';
+import GoBackBtn from '../GoBackBtn/GoBackBtn';
 
 const initialState = {
   title: '',
@@ -66,7 +67,7 @@ export default function ProjectForm({ projectObj }) {
           </InputGroup>
         </Form>
       </div>
-      <button type="button" className={formStyles.goBackBtn} onClick={router.back}>← Go Back</button>
+      <GoBackBtn />
     </>
   );
 }
