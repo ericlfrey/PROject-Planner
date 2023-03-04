@@ -1,3 +1,17 @@
+.headingDiv {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.link {
+  color: var(--orange);
+}
+
+.link:hover {
+  color: var(--light-green);
+}
+
 .pageHeading {
   margin-top: 25px;
   text-align: center;
