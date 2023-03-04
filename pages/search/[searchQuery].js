@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllProjectsDetails } from '../../api/mergedData';
 import ProjectCard from '../../components/Cards/ProjectCard';
 import { useAuth } from '../../utils/context/authContext';
+import pagesStyles from '../../styles/PagesStyles.module.css';
 
 export default function SearchPage() {
   const [projects, setProjects] = useState([]);
@@ -29,8 +30,8 @@ export default function SearchPage() {
       <Head>
         <title>Search for "{`${searchQuery}`}"</title>
       </Head>
-      <h1>Search results for "{searchQuery}"</h1>
-      <div className="d-flex flex-wrap justify-content-center">
+      <h4 className={pagesStyles.pageHeading}>Search results for "{searchQuery}"</h4>
+      <div className={pagesStyles.projectCardsDiv}>
         {projects.map((project) => <ProjectCard key={project.firebaseKey} projectObj={project} />)}
       </div>
     </>

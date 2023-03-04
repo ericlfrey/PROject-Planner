@@ -6,6 +6,7 @@ import { getProjectDetails } from '../../api/mergedData';
 import MaterialCard from '../../components/Cards/MaterialCard';
 import TaskCard from '../../components/Cards/TaskCard';
 import ProjectDetails from '../../components/Details/ProjectDetails';
+import pagesStyles from '../../styles/PagesStyles.module.css';
 
 export default function ViewProjectPage() {
   const [project, setProject] = useState({});
@@ -28,8 +29,8 @@ export default function ViewProjectPage() {
       </Head>
       <ProjectDetails project={project} />
       <hr />
-      <h4>Tasks:</h4>
-      <div className="mb-5">
+      <h4 className={pagesStyles.projectDetailsCardHeading}>Tasks:</h4>
+      <div className={pagesStyles.projectDetailsTasksDiv}>
         {project.projectTasks?.map((task) => (
           <TaskCard
             key={task.firebaseKey}
@@ -38,8 +39,8 @@ export default function ViewProjectPage() {
           />
         ))}
       </div>
-      <h4><i>Materials:</i></h4>
-      <div className="mb-5">
+      <h4 className={pagesStyles.projectDetailsCardHeading}>Materials:</h4>
+      <div className={pagesStyles.projectDetailsMaterialsDiv}>
         {project.projectMaterials?.map((material) => (
           <MaterialCard
             key={material.firebaseKey}

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { createTask, updateTask } from '../../api/taskData';
 import formStyles from '../../styles/FormStyles.module.css';
@@ -141,9 +141,9 @@ export default function TaskForm({ projectFirebaseKey, taskObj }) {
             </Form.Group>
           )}
         <div>
-          <Button variant="success" type="submit" className={formStyles.formBtn}>
+          <button type="submit" className={formStyles.formBtn}>
             {taskObj.firebaseKey ? 'Edit Task' : 'Add Task'}
-          </Button>
+          </button>
         </div>
       </Form>
     </div>

@@ -1,0 +1,25 @@
+.pageHeading {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.projectCardsDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Project Details Page  */
+
+.projectDetailsCardHeading {
+  font-style: italic;
+  margin-top: 25px;
+}
+
+.projectDetailsTasksDiv {
+  margin-bottom: 25px;
+}
+
+.projectDetailsMaterialsDiv {
+  margin-bottom: 100px;
+}
