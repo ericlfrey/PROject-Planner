@@ -4,7 +4,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/321f4006-a257-43b5-a88c-09a10b314499/deploy-status)](https://app.netlify.com/sites/elfrey-project-planner/deploys)
 
-[Go Get Shit Done!](https://elfrey-project-planner.netlify.app/) - Link to App
+[Go Get Shit Done!](https://elfrey-get-shit-done.netlify.app/) - Link to App
 
 ## Topics
 - [Overview](#overview)
@@ -54,7 +54,7 @@ Planning is hard. Maintaining details on several projects at once can easily lea
 
 
 ## Try the app yourself
-Get Shit Done has been deployed on Netlify, and can be [viewed here](https://elfrey-project-planner.netlify.app/).
+Get Shit Done has been deployed on Netlify, and can be [viewed here](https://elfrey-get-shit-done.netlify.app/).
 
 ## Planning
 #### ERD for GSD MVP
