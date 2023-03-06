@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { deleteProjectDetails } from '../../api/mergedData';
 import { getProjectMaterials } from '../../api/materialData';
-// import styles from './ProjectDetails.module.css';
 import cardStyles from '../../styles/CardStyles.module.css';
 
 export default function ProjectDetails({ project }) {
