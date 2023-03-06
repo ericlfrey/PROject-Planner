@@ -71,6 +71,7 @@
 }
 
 .goBackBtn {
+  all: unset;
   color: var(--dark-green);
   font-size: 25px;
 }

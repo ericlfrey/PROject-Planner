@@ -9,7 +9,6 @@ import { deleteProjectDetails } from '../../api/mergedData';
 import { getProjectMaterials } from '../../api/materialData';
 // import styles from './ProjectDetails.module.css';
 import cardStyles from '../../styles/CardStyles.module.css';
-import GoBackBtn from '../GoBackBtn/GoBackBtn';
 
 export default function ProjectDetails({ project }) {
   const [materials, setMaterials] = useState([]);
@@ -68,7 +67,9 @@ export default function ProjectDetails({ project }) {
           </blockquote>
         </Card.Body>
       </Card>
-      <GoBackBtn />
+      <Link passHref href="/">
+        <button className={cardStyles.goBackBtn} type="button">← Go Back</button>
+      </Link>
     </>
   );
 }
