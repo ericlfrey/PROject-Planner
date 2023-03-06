@@ -3,6 +3,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Card } from 'react-bootstrap';
 import { getUserProjects } from '../api/projectData';
 import ProjectCard from '../components/Cards/ProjectCard';
 import { useAuth } from '../utils/context/authContext';
@@ -22,24 +23,26 @@ function Home() {
         <title>Home</title>
       </Head>
       <div className={pagesStyles.headingDiv}>
-        {projects.length
-          ? <h4 className={pagesStyles.pageHeading}>{user.displayName}'s Projects:</h4>
-          : (
-            <h2 className={pagesStyles.pageHeading}>Welcome, {user.displayName}. It looks like you have either gotten all your shit done, or you have some shit to get started! Do you want to
-              <Link passHref href="/project/new">
-                <span className={pagesStyles.link}> Add a Project?</span>
-              </Link>
-            </h2>
-          )}
+        <h4 className={pagesStyles.pageHeading}>{user.displayName}'s Projects:</h4>
       </div>
-      <div className={pagesStyles.projectCardsDiv}>
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.firebaseKey}
-            projectObj={project}
-          />
-        ))}
-      </div>
+      {projects.length
+        ? (
+          <div className={pagesStyles.projectCardsDiv}>
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.firebaseKey}
+                projectObj={project}
+              />
+            ))}
+          </div>
+        )
+        : (
+          <div className={pagesStyles.pageHeading}>
+            <Link passHref href="/project/new">
+              <Card.Link className={pagesStyles.link}> Add a Project?</Card.Link>
+            </Link>
+          </div>
+        )}
     </>
   );
 }

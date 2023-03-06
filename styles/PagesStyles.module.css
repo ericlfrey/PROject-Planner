@@ -5,7 +5,8 @@
 }
 
 .link {
-  color: var(--orange);
+  color: var(--dark-green);
+  font-size: 25px;
 }
 
 .link:hover {
