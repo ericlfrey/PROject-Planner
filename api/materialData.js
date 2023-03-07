@@ -21,7 +21,7 @@ const getProjectMaterials = (projectId) => new Promise((resolve, reject) => {
 });
 
 const getTaskMaterials = (taskID) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/tasks.json?orderBy="task_id"&equalTo="${taskID}"`, {
+  fetch(`${endpoint}/materials.json?orderBy="task_id"&equalTo="${taskID}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
