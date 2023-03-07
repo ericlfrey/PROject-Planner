@@ -20,6 +20,7 @@ export default function ViewTaskPage() {
         <title>{task.task_name}</title>
       </Head>
       <TaskDetails firebaseKey={firebaseKey} />
+      <h4>Task Materials:</h4>
     </>
   );
 }

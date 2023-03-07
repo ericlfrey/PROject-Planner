@@ -46,12 +46,12 @@ export default function TaskDetails({ firebaseKey }) {
           <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>Project: {project.title}</footer>
           <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>Date Created: {new Date(task.date_created).toLocaleDateString()}</footer>
           <footer className={`${cardStyles.cardSubtitle} blockquote-footer mt-2`}>{task.due_date ? `Due Date: ${task.due_date}` : 'No due date'}</footer>
-          <hr />
-          <h4>Task Details:</h4>
-          <Card.Text className={cardStyles.detailsText}>{task.details}</Card.Text>
           <Link passHref href={`/project/${task.project_id}`}>
             <Card.Link className={cardStyles.goBackBtn}> ← Go Back</Card.Link>
           </Link>
+          <hr />
+          <h4>Task Details:</h4>
+          <Card.Text className={cardStyles.detailsText}>{task.details}</Card.Text>
         </blockquote>
       </Card.Body>
     </Card>
