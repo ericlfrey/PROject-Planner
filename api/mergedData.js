@@ -1,4 +1,6 @@
-import { deleteMaterial, getProjectMaterials } from './materialData';
+import {
+  deleteMaterial, getProjectMaterials, getSingleMaterial, getTaskMaterials, updateMaterial,
+} from './materialData';
 import { deleteProject, getSingleProject, getUserProjects } from './projectData';
 import { deleteTask, getProjectTasks } from './taskData';
 
@@ -22,6 +24,20 @@ const deleteProjectDetails = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteTaskDetails = (firebaseKey) => new Promise((resolve, reject) => {
+  getTaskMaterials(firebaseKey).then((materialsArr) => {
+    const deleteTaskIds = materialsArr.map((material) => (
+      getSingleMaterial(material.firebaseKey).then((materialObj) => {
+        const patchPayload = { ...materialObj, task_id: '' };
+        updateMaterial(patchPayload);
+        Promise.all(deleteTaskIds).then(() => {
+          deleteTask(firebaseKey).then(resolve);
+        });
+      })));
+  })
+    .catch(reject);
+});
+
 const getAllProjectsDetails = (uid) => new Promise((resolve, reject) => {
   getUserProjects(uid).then((userProjectsArr) => {
     const projectDetailsPromises = userProjectsArr.map((project) => getProjectDetails(project.firebaseKey));
@@ -34,4 +50,5 @@ export {
   getProjectDetails,
   deleteProjectDetails,
   getAllProjectsDetails,
+  deleteTaskDetails,
 };
