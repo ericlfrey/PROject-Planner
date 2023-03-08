@@ -28,6 +28,7 @@ export default function ViewTaskPage() {
         <title>{task.task_name}</title>
       </Head>
       <TaskDetails firebaseKey={firebaseKey} />
+      <hr />
       {materials.length ? <h4>Task Materials:</h4> : ''}
       {materials.map((material) => (
         <MaterialCard
