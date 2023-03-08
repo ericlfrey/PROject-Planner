@@ -5,13 +5,13 @@ import {
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { deleteTask } from '../../api/taskData';
 import cardStyles from '../../styles/CardStyles.module.css';
+import { deleteTaskDetails } from '../../api/mergedData';
 
 export default function TaskCard({ taskObj, onChange }) {
   const handleDeleteTask = () => {
     if (window.confirm(`Are you sure you want to delete "${taskObj.task_name}"? This task cannot be undone.`)) {
-      deleteTask(taskObj.firebaseKey).then(onChange);
+      deleteTaskDetails(taskObj.firebaseKey).then(onChange);
     }
   };
 
