@@ -7,6 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { getSingleUser } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -15,6 +16,9 @@ AuthContext.displayName = 'AuthContext'; // Context object accepts a displayName
 
 const AuthProvider = (props) => {
   const [user, setUser] = useState(null);
+  const [uid, setUid] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [email, setEmail] = useState('');
 
   // there are 3 states for the user:
   // null = application initial state, not yet loaded
@@ -22,23 +26,36 @@ const AuthProvider = (props) => {
   // an object/value = user is logged in
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((fbUser) => {
+    firebase.auth().onAuthStateChanged(async (fbUser) => {
       if (fbUser) {
-        setUser(fbUser);
+        setUid(fbUser.uid);
+        setDisplayName(fbUser.displayName);
+        setEmail(fbUser.email);
+        await getSingleUser(fbUser.uid).then(async (response) => {
+          if (Object.keys(response).length === 0) {
+            setUser('NO USER');
+          } else {
+            setUser(fbUser);
+          }
+        });
       } else {
         setUser(false);
       }
-    }); // creates a single global listener for auth state changed
+    });
   }, []);
 
   const value = useMemo( // https://reactjs.org/docs/hooks-reference.html#usememo
     () => ({
       user,
       userLoading: user === null,
+      uid,
+      displayName,
+      email,
+      setUser,
       // as long as user === null, will be true
       // As soon as the user value !== null, value will be false
     }),
-    [user],
+    [displayName, email, uid, user],
   );
 
   return <AuthContext.Provider value={value} {...props} />;
