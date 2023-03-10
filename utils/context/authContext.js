@@ -7,7 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { getSingleUser } from '../../api/userData';
+import { createUser, getSingleUser, updateUser } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -16,9 +16,6 @@ AuthContext.displayName = 'AuthContext'; // Context object accepts a displayName
 
 const AuthProvider = (props) => {
   const [user, setUser] = useState(null);
-  const [uid, setUid] = useState('');
-  const [displayName, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
 
   // there are 3 states for the user:
   // null = application initial state, not yet loaded
@@ -28,11 +25,17 @@ const AuthProvider = (props) => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (fbUser) => {
       if (fbUser) {
-        setUid(fbUser.uid);
-        setDisplayName(fbUser.displayName);
-        setEmail(fbUser.email);
         await getSingleUser(fbUser.uid).then(async (response) => {
           if (Object.keys(response).length === 0) {
+            const payload = { uid: fbUser.uid, displayName: fbUser.displayName, email: fbUser.email };
+            createUser(payload).then(({ name }) => {
+              const patchPayload = { firebaseKey: name };
+              updateUser(patchPayload).then(() => {
+                getSingleUser(fbUser.uid).then((userData) => {
+                  setUser(userData);
+                });
+              });
+            });
             setUser('NO USER');
           } else {
             setUser(fbUser);
@@ -48,14 +51,10 @@ const AuthProvider = (props) => {
     () => ({
       user,
       userLoading: user === null,
-      uid,
-      displayName,
-      email,
-      setUser,
       // as long as user === null, will be true
       // As soon as the user value !== null, value will be false
     }),
-    [displayName, email, uid, user],
+    [user],
   );
 
   return <AuthContext.Provider value={value} {...props} />;
