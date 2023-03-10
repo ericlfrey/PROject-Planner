@@ -4,7 +4,6 @@ import { useAuth } from './context/authContext';
 import Loading from '../components/Loading';
 import Signin from '../components/Signin';
 import NavBar from '../components/NavBar/NavBar';
-// import { createUser, getSingleUser, updateUser } from '../api/userData';
 
 const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) => {
   const {
@@ -15,19 +14,6 @@ const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) 
   if (userLoading) {
     return <Loading />;
   }
-
-  // if (user === 'NO USER') {
-  //   const payload = { uid };
-  //   console.warn(payload);
-  //   createUser(payload).then(({ name }) => {
-  //     const patchPayload = { firebaseKey: name };
-  //     updateUser(patchPayload).then(() => {
-  //       getSingleUser(uid).then((userData) => {
-  //         setUser(userData);
-  //       });
-  //     });
-  //   });
-  // }
 
   // what the user should see if they are logged in
   if (user) {

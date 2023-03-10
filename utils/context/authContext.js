@@ -27,16 +27,16 @@ const AuthProvider = (props) => {
       if (fbUser) {
         await getSingleUser(fbUser.uid).then(async (response) => {
           if (Object.keys(response).length === 0) {
-            const payload = { uid: fbUser.uid, displayName: fbUser.displayName, email: fbUser.email };
+            const { uid, displayName, email } = fbUser;
+            const payload = { uid, displayName, email };
             createUser(payload).then(({ name }) => {
               const patchPayload = { firebaseKey: name };
               updateUser(patchPayload).then(() => {
-                getSingleUser(fbUser.uid).then((userData) => {
-                  setUser(userData);
+                getSingleUser(fbUser.uid).then(() => {
+                  setUser(fbUser);
                 });
               });
             });
-            setUser('NO USER');
           } else {
             setUser(fbUser);
           }
