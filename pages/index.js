@@ -8,29 +8,13 @@ import { getUserProjects } from '../api/projectData';
 import ProjectCard from '../components/Cards/ProjectCard';
 import { useAuth } from '../utils/context/authContext';
 import pagesStyles from '../styles/PagesStyles.module.css';
-import { createUser, getAllUsers, updateUser } from '../api/userData';
 
 function Home() {
   const [projects, setProjects] = useState([]);
   const { user } = useAuth();
 
-  const verifyUser = () => {
-    getAllUsers().then((usersArr) => {
-      const filteredArr = usersArr.filter((userObj) => userObj.uid === user.uid);
-      if (filteredArr.length === 0) {
-        const { uid, displayName, email } = user;
-        const payload = { uid, displayName, email };
-        createUser(payload).then(({ name }) => {
-          const patchPayload = { firebaseKey: name };
-          updateUser(patchPayload);
-        });
-      }
-    });
-  };
-
   useEffect(() => {
     getUserProjects(user.uid).then(setProjects);
-    verifyUser();
   }, [user]);
 
   return (
