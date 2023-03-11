@@ -7,7 +7,6 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { createUser, getSingleUser, updateUser } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -25,34 +24,17 @@ const AuthProvider = (props) => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (fbUser) => {
       if (fbUser) {
-        await getSingleUser(fbUser.uid).then(async (response) => {
-          if (Object.keys(response).length === 0) {
-            const { uid, displayName, email } = fbUser;
-            const payload = { uid, displayName, email };
-            createUser(payload).then(({ name }) => {
-              const patchPayload = { firebaseKey: name };
-              updateUser(patchPayload).then(() => {
-                getSingleUser(fbUser.uid).then(() => {
-                  setUser(fbUser);
-                });
-              });
-            });
-          } else {
-            setUser(fbUser);
-          }
-        });
+        setUser(fbUser);
       } else {
         setUser(false);
       }
     });
   }, []);
 
-  const value = useMemo( // https://reactjs.org/docs/hooks-reference.html#usememo
+  const value = useMemo(
     () => ({
       user,
       userLoading: user === null,
-      // as long as user === null, will be true
-      // As soon as the user value !== null, value will be false
     }),
     [user],
   );

@@ -25,24 +25,26 @@ function Home() {
       <div className={pagesStyles.headingDiv}>
         <h4 className={pagesStyles.pageHeading}>{user.displayName}'s Projects:</h4>
       </div>
-      {projects.length
-        ? (
-          <div className={pagesStyles.projectCardsDiv}>
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.firebaseKey}
-                projectObj={project}
-              />
-            ))}
-          </div>
-        )
-        : (
-          <div className={pagesStyles.pageHeading}>
-            <Link passHref href="/project/new">
-              <Card.Link className={pagesStyles.link}> Add a Project?</Card.Link>
-            </Link>
-          </div>
-        )}
+      {
+        projects.length
+          ? (
+            <div className={pagesStyles.projectCardsDiv}>
+              {projects.map((project) => (
+                <ProjectCard
+                  key={project.firebaseKey}
+                  projectObj={project}
+                />
+              ))}
+            </div>
+          )
+          : (
+            <div className={pagesStyles.pageHeading}>
+              <Link passHref href="/project/new">
+                <Card.Link className={pagesStyles.link}> Add a Project?</Card.Link>
+              </Link>
+            </div>
+          )
+      }
     </>
   );
 }
