@@ -3,6 +3,7 @@ import {
 } from './materialData';
 import { deleteProject, getSingleProject, getUserProjects } from './projectData';
 import { deleteTask, getProjectTasks } from './taskData';
+import { getAddedUserProjects } from './userProjects';
 
 const getProjectDetails = async (firebaseKey) => {
   const projectObj = await getSingleProject(firebaseKey);
@@ -46,9 +47,26 @@ const getAllProjectsDetails = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getAllAddedUserProjects = (uid) => new Promise((resolve, reject) => {
+  getAddedUserProjects(uid).then((userProjectsArr) => {
+    const addedUserProjects = userProjectsArr.map((project) => getSingleProject(project.project_id));
+    Promise.all(addedUserProjects).then(resolve);
+  })
+    .catch(reject);
+});
+
+const getAllUserProjects = async (uid) => {
+  const userProjects = await getUserProjects(uid);
+  const addedUserProjects = await getAllAddedUserProjects(uid);
+  const allUserProjects = await userProjects.concat(addedUserProjects);
+  return { allUserProjects };
+};
+
 export {
   getProjectDetails,
   deleteProjectDetails,
   getAllProjectsDetails,
   deleteTaskDetails,
+  getAllAddedUserProjects,
+  getAllUserProjects,
 };

@@ -4,17 +4,18 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Card } from 'react-bootstrap';
-import { getUserProjects } from '../api/projectData';
+// import { getUserProjects } from '../api/projectData';
 import ProjectCard from '../components/Cards/ProjectCard';
 import { useAuth } from '../utils/context/authContext';
 import pagesStyles from '../styles/PagesStyles.module.css';
+import { getAllUserProjects } from '../api/mergedData';
 
 function Home() {
   const [projects, setProjects] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
-    getUserProjects(user.uid).then(setProjects);
+    getAllUserProjects(user.uid).then((userProjects) => setProjects(userProjects.allUserProjects));
   }, [user]);
 
   return (
