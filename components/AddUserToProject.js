@@ -32,7 +32,11 @@ export default function AddUserToProject({ projectFirebaseKey }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(user.uid, project.title);
+    if (user) {
+      window.alert(`Are you sure you want to add ${user.displayName} to ${project.title}?`);
+    } else {
+      window.alert('This user does not seem to exist. Try another email.');
+    }
   };
   return (
     <>
