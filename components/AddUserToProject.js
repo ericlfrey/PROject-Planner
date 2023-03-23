@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import { getAllUsers } from '../api/userData';
 import formStyles from '../styles/FormStyles.module.css';
 import GoBackBtn from './GoBackBtn/GoBackBtn';
 import { getSingleProject } from '../api/projectData';
+import { createUserProject, updateUserProject } from '../api/userProjects';
 
 const initialState = {
   email: '',
@@ -14,6 +16,8 @@ export default function AddUserToProject({ projectFirebaseKey }) {
   const [formInput, setFormInput] = useState(initialState);
   const [user, setUser] = useState({});
   const [project, setProject] = useState({});
+
+  const router = useRouter();
 
   useEffect(() => {
     getAllUsers().then((usersArr) => {
@@ -33,7 +37,13 @@ export default function AddUserToProject({ projectFirebaseKey }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user) {
-      window.alert(`Are you sure you want to add ${user.displayName} to ${project.title}?`);
+      if (window.confirm(`Are you sure you want to add ${user.displayName} to ${project.title}?`)) {
+        const payload = { uid: user.uid, project_id: projectFirebaseKey };
+        createUserProject(payload).then(({ name }) => {
+          const patchPayload = { firebaseKey: name };
+          updateUserProject(patchPayload).then(router.push(`/project/${projectFirebaseKey}`));
+        });
+      }
     } else {
       window.alert('This user does not seem to exist. Try another email.');
     }
