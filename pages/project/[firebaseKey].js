@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getProjectDetails } from '../../api/mergedData';
+// import { getAllUsers } from '../../api/userData';
 import MaterialCard from '../../components/Cards/MaterialCard';
 import TaskCard from '../../components/Cards/TaskCard';
 import ProjectDetails from '../../components/Details/ProjectDetails';
@@ -10,9 +11,14 @@ import pagesStyles from '../../styles/PagesStyles.module.css';
 
 export default function ViewProjectPage() {
   const [project, setProject] = useState({});
+  // const [users, setUsers] = useState([]);
 
   const router = useRouter();
   const { firebaseKey } = router.query;
+
+  // const createNewUser = () => {
+  //   getAllUsers().then(setUsers);
+  // };
 
   const getTheProjectDetails = () => {
     getProjectDetails(firebaseKey).then(setProject);
@@ -20,6 +26,8 @@ export default function ViewProjectPage() {
 
   useEffect(() => {
     getTheProjectDetails();
+    // createNewUser();
+    // console.warn(users);
   }, [firebaseKey]);
 
   return (

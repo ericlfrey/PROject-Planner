@@ -7,6 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { createUser, getSingleUser, updateUser } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -21,22 +22,40 @@ const AuthProvider = (props) => {
   // false = user is not logged in, but the app has loaded
   // an object/value = user is logged in
 
+  const verifyUser = (fbUser) => {
+    const { uid, displayName, email } = fbUser;
+    const payload = { uid, displayName, email };
+    createUser(payload).then(({ name }) => {
+      const patchPayload = { firebaseKey: name };
+      updateUser(patchPayload).then(() => {
+        getSingleUser(fbUser.uid).then(() => {
+          setUser(fbUser);
+        });
+      });
+    });
+  };
+  // This Function tests if a User has logged in previously
+
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((fbUser) => {
+    firebase.auth().onAuthStateChanged(async (fbUser) => {
       if (fbUser) {
-        setUser(fbUser);
+        await getSingleUser(fbUser.uid).then(async (response) => {
+          if (Object.keys(response).length === 0) {
+            verifyUser(fbUser);
+          } else {
+            setUser(fbUser);
+          }
+        });
       } else {
         setUser(false);
       }
-    }); // creates a single global listener for auth state changed
+    });
   }, []);
 
-  const value = useMemo( // https://reactjs.org/docs/hooks-reference.html#usememo
+  const value = useMemo(
     () => ({
       user,
       userLoading: user === null,
-      // as long as user === null, will be true
-      // As soon as the user value !== null, value will be false
     }),
     [user],
   );
