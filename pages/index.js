@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Card } from 'react-bootstrap';
-// import { getUserProjects } from '../api/projectData';
 import ProjectCard from '../components/Cards/ProjectCard';
 import { useAuth } from '../utils/context/authContext';
 import pagesStyles from '../styles/PagesStyles.module.css';
