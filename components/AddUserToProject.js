@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { getAllUsers } from '../api/userData';
 import formStyles from '../styles/FormStyles.module.css';
 import GoBackBtn from './GoBackBtn/GoBackBtn';
+import { getSingleProject } from '../api/projectData';
 
 const initialState = {
   email: '',
 };
 
-export default function SearchUser() {
+export default function AddUserToProject({ projectFirebaseKey }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [user, setUser] = useState({});
+  const [project, setProject] = useState({});
+
+  useEffect(() => {
+    getAllUsers().then((usersArr) => {
+      const filteredArr = usersArr.filter((userObj) => userObj.email === formInput.email);
+      setUser(filteredArr[0]);
+    });
+    getSingleProject(projectFirebaseKey).then(setProject);
+  }, [formInput.email, projectFirebaseKey]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +32,7 @@ export default function SearchUser() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(formInput.email);
+    console.warn(user.uid, project.title);
   };
   return (
     <>
@@ -44,3 +57,7 @@ export default function SearchUser() {
     </>
   );
 }
+
+AddUserToProject.propTypes = {
+  projectFirebaseKey: PropTypes.string.isRequired,
+};

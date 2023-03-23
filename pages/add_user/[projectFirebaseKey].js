@@ -1,8 +1,13 @@
+import { useRouter } from 'next/router';
 import React from 'react';
-import SearchUser from '../../components/SearchUser';
+import AddUserToProject from '../../components/AddUserToProject';
 
-export default function addUserToProjectPage() {
+export default function AddUserToProjectPage() {
+  const router = useRouter();
+
+  const { projectFirebaseKey } = router.query;
+
   return (
-    <SearchUser />
+    <AddUserToProject projectFirebaseKey={projectFirebaseKey} />
   );
 }
