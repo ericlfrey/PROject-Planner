@@ -3,7 +3,7 @@ import {
 } from './materialData';
 import { deleteProject, getSingleProject, getUserProjects } from './projectData';
 import { deleteTask, getProjectTasks } from './taskData';
-import { getAddedUserProjects } from './userProjects';
+import { deleteUserProject, getAddedUserProjects, getProjectUserProjects } from './userProjects';
 
 const getProjectDetails = async (firebaseKey) => {
   const projectObj = await getSingleProject(firebaseKey);
@@ -17,8 +17,11 @@ const deleteProjectDetails = (firebaseKey) => new Promise((resolve, reject) => {
     const deleteTaskPromises = tasksArr.map((task) => deleteTask(task.firebaseKey));
     getProjectMaterials(firebaseKey).then((materialsArr) => {
       const deleteMaterialsPromises = materialsArr.map((material) => deleteMaterial(material.firebaseKey));
-      Promise.all(deleteTaskPromises, deleteMaterialsPromises).then(() => {
-        deleteProject(firebaseKey).then(resolve);
+      getProjectUserProjects(firebaseKey).then((userProjectsArr) => {
+        const deleteUserProjectsPromises = userProjectsArr.map((userProject) => deleteUserProject(userProject.firebaseKey));
+        Promise.all(deleteUserProjectsPromises, deleteMaterialsPromises, deleteTaskPromises).then(() => {
+          deleteProject(firebaseKey).then(resolve);
+        });
       });
     });
   })
@@ -55,12 +58,15 @@ const getAllAddedUserProjects = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getAllUserProjects = async (uid) => {
-  const userProjects = await getUserProjects(uid);
-  const addedUserProjects = await getAllAddedUserProjects(uid);
-  const allUserProjects = await userProjects.concat(addedUserProjects);
-  return { allUserProjects };
-};
+const getAllUserProjects = (uid) => new Promise((resolve, reject) => {
+  getUserProjects(uid).then((userProjectsArr) => {
+    getAllAddedUserProjects(uid).then((addedUserProjectsArr) => {
+      const allUserProjects = userProjectsArr.concat(addedUserProjectsArr);
+      Promise.all(allUserProjects).then(resolve);
+    });
+  })
+    .catch(reject);
+});
 
 export {
   getProjectDetails,
