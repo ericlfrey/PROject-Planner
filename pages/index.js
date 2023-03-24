@@ -14,7 +14,7 @@ function Home() {
   const { user } = useAuth();
 
   useEffect(() => {
-    getAllUserProjects(user.uid).then((userProjects) => setProjects(userProjects.allUserProjects));
+    getAllUserProjects(user.uid).then((userProjects) => setProjects(userProjects));
   }, [user]);
 
   return (

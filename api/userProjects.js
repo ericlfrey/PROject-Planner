@@ -46,8 +46,40 @@ const getAddedUserProjects = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getProjectUserProjects = (projectId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/user_projects.json?orderBy="project_id"&equalTo="${projectId}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
+const deleteUserProject = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/user_projects/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
 export {
   createUserProject,
   getAddedUserProjects,
   updateUserProject,
+  getProjectUserProjects,
+  deleteUserProject,
 };
