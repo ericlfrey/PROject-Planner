@@ -30,6 +30,9 @@ const deleteProjectDetails = (firebaseKey) => new Promise((resolve, reject) => {
 
 const deleteTaskDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getTaskMaterials(firebaseKey).then((materialsArr) => {
+    if (materialsArr.length === 0) {
+      deleteTask(firebaseKey).then(resolve);
+    }
     const deleteTaskIds = materialsArr.map((material) => (
       getSingleMaterial(material.firebaseKey).then((materialObj) => {
         const patchPayload = { ...materialObj, task_id: '' };
