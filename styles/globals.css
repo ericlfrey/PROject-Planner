@@ -33,6 +33,7 @@ body {
   height: 100vh;
   width: 100%;
   background-color: var(--off-white);
+  background-image: url('../public/images/paper.jpg');
 }
 
 /* Styles for the form checks- could not get them in the module */
