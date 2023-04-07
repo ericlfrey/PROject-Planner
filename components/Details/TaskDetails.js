@@ -21,7 +21,9 @@ export default function TaskDetails({ firebaseKey }) {
 
   const handleDeleteTask = () => {
     if (window.confirm(`Are you sure you want to delete "${task.task_name}"? This task cannot be undone.`)) {
-      deleteTaskDetails(firebaseKey).then(router.back);
+      deleteTaskDetails(firebaseKey).then(() => {
+        router.push(`/project/${project.firebaseKey}`);
+      });
     }
   };
 
