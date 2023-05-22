@@ -56,6 +56,38 @@ Planning is hard. Maintaining details on several projects at once can easily lea
 ## Try the app yourself
 Get Shit Done has been deployed on Netlify, and can be [viewed here](https://elfrey-get-shit-done.netlify.app/).
 
+1. Set up a [Firebase](https://firebase.google.com/) project - [Here's how to setup](https://www.loom.com/share/163ffe1539bb482196efa713ed6231e9)
+2. Clone GSD to your local machine 
+```
+git@github.com:ericlfrey/PROject-Planner.git
+```
+
+3. Next, create an .env file at the root of the project and paste the following keys into the .env file:
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=""
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=""
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=""
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=""
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=""
+NEXT_PUBLIC_FIREBASE_APP_ID=""
+```
+4. The last portion of the Firebase walkthrough from step 1 highlights where to find the values to put in the empty strings in the code snippet of step 3 . From Firebase, copy the values and paste them into the empty strings of the respective keys located in the .env file.
+5. Be in the root directory and from your command line, run
+```
+npm i
+```
+6. Now from your command line, run:
+```
+npm run prepare
+```
+7. To start Plated, run:
+```
+npm run dev
+```
+8. Click http://localhost:3000 in the terminal to open the browser
+
+
+
 ## Planning
 #### ERD for GSD MVP
 <img src="https://user-images.githubusercontent.com/107942776/223234713-6799c67a-a36b-4a39-826d-3f566e0c4473.png" width="500"/>
