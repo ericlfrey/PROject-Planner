@@ -4,6 +4,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/321f4006-a257-43b5-a88c-09a10b314499/deploy-status)](https://app.netlify.com/sites/elfrey-project-planner/deploys)
 
+[GSD Live Demo](https://www.loom.com/share/33bdbc8002d44138a09159332885b55f) - Loom Walkthrough
+
 [Go Get Shit Done!](https://elfrey-get-shit-done.netlify.app/) - Link to App
 
 ## Topics
@@ -54,6 +56,8 @@ Planning is hard. Maintaining details on several projects at once can easily lea
 
 
 ## Try the app yourself
+Watch the [Video Walkthrough](https://www.loom.com/share/33bdbc8002d44138a09159332885b55f) on Loom!
+
 Get Shit Done has been deployed on Netlify, and can be [viewed here](https://elfrey-get-shit-done.netlify.app/).
 
 1. Set up a [Firebase](https://firebase.google.com/) project - [Here's how to setup](https://www.loom.com/share/163ffe1539bb482196efa713ed6231e9)
