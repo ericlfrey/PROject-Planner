@@ -84,7 +84,7 @@ npm i
 ```
 npm run prepare
 ```
-7. To start Plated, run:
+7. To start Get Shit Done, run:
 ```
 npm run dev
 ```
